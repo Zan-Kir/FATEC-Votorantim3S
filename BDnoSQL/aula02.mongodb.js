@@ -81,7 +81,7 @@ db.receitas.find({preco: {
 use('aula02') 
 db.receitas.find({$and:[
                         {preco: {$lt:50}},
-                        {nome: /cofu/i}
+                        {nome: /cogu/i}
                     ]},
                 {nome:1, preco:1})
 
@@ -89,7 +89,7 @@ db.receitas.find({$and:[
 use('aula02') 
 db.receitas.find({$or:[
                         {preco: {$lt:20}},
-                        {nome: /cofu/i}
+                        {nome: /cogu/i}
                     ]},
                 {nome:1, preco:1})
 
@@ -106,3 +106,60 @@ db.receitas.updateOne(
                      {nome: /costela/i},
                      {$set: {preco: 25.00}})
 
+use('aula02')
+db.receitas.updateOne(
+                     {_id: ObjectId('66ba91d82a80a4c1620946b5')},
+                     {$set: {preco: 45.99}})
+
+//update receitas set vegetariano = true where preco >= 10
+use('aula02')
+db.receitas.updateMany(
+                     {preco: {$gte: 10}},
+                     {$set: {vegetariano: true}}
+                    )
+
+//unset no update - remove o atributo especificado
+use('aula02')
+db.receitas.updateMany(
+    {}, // no exemplo não há filtro
+    {$unset: {vegetariano: ''}}
+)
+
+//$push -- Adiciona um novo elemento ao array no update
+use('aula02')
+db.receitas.updateOne(
+    {nome: /cogu/i},
+    {$push: {ingredientes: 'alface'}}
+)
+
+//$pull - Remove um elemento já existente no array
+use('aula02')
+db.receitas.updateMany(
+    {},
+    {$pull: {ingredientes: 'queijo'}}
+    )
+
+use('aula02')
+db.receitas.find({}, {nome: 1, "detalhe.calorias": 1})
+
+//incrementando ou decrementando um valor no update
+use('aula02')
+db.receitas.updateMany(
+    {},
+    {$inc: {"detalhe.calorias": 100}} //para decrementar usa negativo ex: -100
+)
+
+//delete from receitas where _id=123
+use('aula02')
+db.receitas.deleteOne(
+    {_id: '123'}
+)
+
+//delete from receitas where preco > 10
+use('aula02')
+db.receitas.deleteMany(
+    {preco: {$gt: 10}}
+)
+
+use('aula02')
+db.receitas.find({}, {})
