@@ -42,10 +42,10 @@ function Converte(tipo, temperatura) {
   switch (tipinho) {
     case ('c'):
       farenheit = (9 * temperatura / 5) + 32
-      return (`A temperatura ${temperatura}${tipo}º converte em ${farenheit}Fº`)
+      return (`${farenheit}`)
     case ('f'):
       celsius = (5 * (temperatura - 32) / 9)
-      return (`A temperatura ${temperatura}${tipo}º converte em ${celsius}Cº`)
+      return (`${celsius}`)
   }
 }
 
