@@ -3,10 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+
 import Controller.Controller;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
+
     Controller controle;
+
     public Login() {
         initComponents();
         controle = new Controller();
@@ -24,9 +28,10 @@ public class Login extends javax.swing.JFrame {
         labelLogin = new javax.swing.JLabel();
         labelSenha = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        fieldSenha = new javax.swing.JTextField();
         fieldLogin = new javax.swing.JTextField();
+        buttonCadastrar = new javax.swing.JButton();
         buttonEntrar = new javax.swing.JButton();
+        fieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,6 +41,13 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Autenticação");
+
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCadastrarMouseClicked(evt);
+            }
+        });
 
         buttonEntrar.setText("Entrar");
         buttonEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,11 +73,13 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(0, 40, Short.MAX_VALUE))
                             .addComponent(labelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonEntrar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(fieldLogin)
-                                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonCadastrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                                .addComponent(buttonEntrar))
+                            .addComponent(fieldLogin)
+                            .addComponent(fieldSenha))
                         .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
@@ -74,25 +88,36 @@ public class Login extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelLogin)
-                        .addGap(9, 9, 9)
-                        .addComponent(labelSenha))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelLogin))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSenha)
+                    .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(buttonEntrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCadastrar)
+                    .addComponent(buttonEntrar))
                 .addGap(72, 72, 72))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCadastrarMouseClicked
+        controle.registraUser(fieldLogin.getText(), fieldSenha.getText());
+        JOptionPane.showMessageDialog(null, "Usuario cadastrado");
+        fieldLogin.setText("");
+        fieldSenha.setText("");
+    }//GEN-LAST:event_buttonCadastrarMouseClicked
+
     private void buttonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEntrarMouseClicked
-        controle.validaLogin(fieldLogin.getText(), fieldSenha.getText());
+        if (controle.validaLogin(fieldLogin.getText(), fieldSenha.getText())) {
+            JOptionPane.showMessageDialog(null, "Usuario Logado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario ou senha invalido");
+        };
     }//GEN-LAST:event_buttonEntrarMouseClicked
 
     /**
@@ -131,9 +156,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCadastrar;
     private javax.swing.JButton buttonEntrar;
     private javax.swing.JTextField fieldLogin;
-    private javax.swing.JTextField fieldSenha;
+    private javax.swing.JPasswordField fieldSenha;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelSenha;

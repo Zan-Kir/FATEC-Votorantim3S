@@ -39,12 +39,14 @@
                           <Component id="labelLogin" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buttonEntrar" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="fieldLogin" max="32767" attributes="0"/>
-                              <Component id="fieldSenha" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="buttonCadastrar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="56" max="32767" attributes="0"/>
+                              <Component id="buttonEntrar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="fieldLogin" max="32767" attributes="0"/>
+                          <Component id="fieldSenha" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
@@ -58,20 +60,20 @@
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="80" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Group type="102" alignment="2" attributes="0">
-                      <Component id="labelLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="9" pref="9" max="9" attributes="0"/>
-                      <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="2" attributes="0">
-                      <Component id="fieldLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                      <Component id="fieldSenha" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fieldLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buttonEntrar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonEntrar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -96,9 +98,15 @@
         <Property name="text" type="java.lang.String" value="Autentica&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fieldSenha">
-    </Component>
     <Component class="javax.swing.JTextField" name="fieldLogin">
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonCadastrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCadastrarMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonEntrar">
       <Properties>
@@ -107,6 +115,8 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonEntrarMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="fieldSenha">
     </Component>
   </SubComponents>
 </Form>

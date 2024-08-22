@@ -1,38 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import Controller.Controller;
 
-/**
- *
- * @author Alunos
- */
 public class ExercicioTeste {
-    
-    public ExercicioTeste() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+
+    @Test
+    public void testRegistraUser() {
+        Controller controle = new Controller();
+        controle.registraUser("admin", "senha123");
+
+        assertTrue(controle.validaLogin("admin", "senha123"), "O usuario deveria conseguir entrar");
     }
 
+    @Test
+    public void testValidaLoginCerto() {
+        Controller controle = new Controller();
+        controle.registraUser("admin", "senha123");
+
+        assertTrue(controle.validaLogin("admin", "senha123"), "O usuario deveria conseguir entrar");
+    }
+
+    @Test
+    public void testValidaLoginIncorreto() {
+        Controller controle = new Controller();
+        controle.registraUser("admin", "senha123");
+
+        assertFalse(controle.validaLogin("admin", "senhaSenha"), "O usuario não deveria conseguir entrar");
+    }
 }
