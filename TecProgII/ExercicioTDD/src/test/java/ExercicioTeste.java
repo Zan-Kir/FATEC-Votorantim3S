@@ -4,17 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import Controller.Controller;
 
 public class ExercicioTeste {
-
+    
     @Test
-    public void testRegistraUser() {
-        Controller controle = new Controller();
-        controle.registraUser("admin", "senha123");
-
-        assertTrue(controle.validaLogin("admin", "senha123"), "O usuario deveria conseguir entrar");
-    }
-
-    @Test
-    public void testValidaLoginCerto() {
+    public void testRegistraeValidaLogin() {
         Controller controle = new Controller();
         controle.registraUser("admin", "senha123");
 
