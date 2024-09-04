@@ -6,7 +6,11 @@ import Controller.Controller;
 public class ExercicioTeste {
     
     @Test
+<<<<<<< Updated upstream
     public void testRegistraeValidaLogin() {
+=======
+    public void testRegistraEValidaUser() {
+>>>>>>> Stashed changes
         Controller controle = new Controller();
         controle.registraUser("admin", "senha123");
 
