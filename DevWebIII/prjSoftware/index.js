@@ -4,9 +4,11 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
 const bodyParser = require('body-parser');
 const homeRoute = require('./src/routes/homeRoute')
+const adminRoute = require('./src/routes/adminRoute')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(homeRoute)
+app.use(adminRoute)
 
 app.use(bodyParser.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
