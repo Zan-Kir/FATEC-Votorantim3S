@@ -1,6 +1,11 @@
+//import frameworks
 const express = require('express')
-const bodyParser = require('body-parser')
 const app = express()
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger-output.json')
+const bodyParser = require('body-parser')
+
+//import rotas
 const userRoute = require('./src/routes/userRoute')
 const projectRoute = require('./src/routes/projectRoute')
 
@@ -13,9 +18,10 @@ mongoose.Promise = global.Promise
 let db = mongoose.connection
 db.on('error', console.error.bind(console, 'Erro ao conectar ao MongoDB'))
 
-//bodyParser
+//middlewares
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 //rotas
 app.use(userRoute)
