@@ -59,7 +59,7 @@ public class connectionDAO {
             Statement stmt;
 
             try {
-                stmt =con.createStatement();
+                stmt = con.createStatement();
                 
                 String sql = "INSERT INTO dbo."+banco+" VALUES ("+novoCliente.getIdCli()+
                         "','"+novoCliente.getNomeCli()+
@@ -70,6 +70,23 @@ public class connectionDAO {
                         "','"+novoCliente.getCidadeCli()+
                         "','"+novoCliente.getUfCli()+
                         "','"+novoCliente.getCepCli()+
+                        "','"+novoCliente.getTelCli()+
+                        "','"+novoCliente.getCpfCli()+
+                        "','"+novoCliente.getDataNascCli()+
+                        "','"+novoCliente.getCnpjCli()+
+                        ")";
+                JOptionPane.showMessageDialog(null, "String de Insert: "+sql);
+                try {
+                    stmt.executeUpdate(sql);
+                    JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectionDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
