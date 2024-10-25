@@ -31,7 +31,7 @@ public class historicos {
         this.desHis = desHis;
     }
     
-    public String dadosSQLInsert(){
+    public String dadosSQLValues(){
         String dadosHistorico;
         dadosHistorico = "'"
         + this.getIdHis()+ "','"

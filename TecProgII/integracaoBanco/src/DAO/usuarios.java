@@ -50,7 +50,7 @@ public class usuarios {
         this.numCc = numCc;
     }
     
-    public String dadosSQLInsert(){
+    public String dadosSQLValues(){
         String dadosClientes;
         dadosClientes = "'"
         + this.getId()+ "','"

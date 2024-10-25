@@ -137,7 +137,7 @@ public class clientes {
         return cnpjCli;
     }
     
-    public String dadosSQLInsert(){
+    public String dadosSQLValues(){
         String dadosClientes;
         dadosClientes = "'"
         + this.getIdCli() + "','"

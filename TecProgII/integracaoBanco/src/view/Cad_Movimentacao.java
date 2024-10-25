@@ -201,7 +201,7 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
         
         connectDAO objcon = new connectDAO();
         
-        objcon.insereRegistroJFBD("MOVIMENTACAO",dados_movimentacao.dadosSQLInsert());
+        objcon.insereRegistroJFBD("MOVIMENTACAO",dados_movimentacao.dadosSQLValues());
         
         jTextField1.setText("");
         jTextField2.setText("");

@@ -103,12 +103,27 @@ public class menu extends javax.swing.JFrame {
         jMenu4.setText("Agencia");
 
         jMenuItem4.setText("Cadastrar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem4);
 
         jMenuItem5.setText("Alterar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuItem15.setText("Excluir");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem15);
 
         jMenuBar1.add(jMenu4);
@@ -207,6 +222,24 @@ public class menu extends javax.swing.JFrame {
         Cad_Cliente acesso_cliente = new Cad_Cliente(operacao);
         acesso_cliente.setVisible(true);
     }//GEN-LAST:event_jMenuExcluirCliActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        String operacao = "Incluir";
+        Cad_Agencia acesso_agencia = new Cad_Agencia(operacao);
+        acesso_agencia.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        String operacao = "Alterar";
+        Cad_Agencia acesso_agencia = new Cad_Agencia(operacao);
+        acesso_agencia.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        String operacao = "Excluir";
+        Cad_Agencia acesso_agencia = new Cad_Agencia(operacao);
+        acesso_agencia.setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     /**
      * @param args the command line arguments

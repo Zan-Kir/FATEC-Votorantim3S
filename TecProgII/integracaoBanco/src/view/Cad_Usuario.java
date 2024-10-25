@@ -136,7 +136,7 @@ public class Cad_Usuario extends javax.swing.JFrame {
         
         connectDAO objcon = new connectDAO();
         
-        objcon.insereRegistroJFBD("USUARIOS",dados_usuario.dadosSQLInsert());
+        objcon.insereRegistroJFBD("USUARIOS",dados_usuario.dadosSQLValues());
         
         jTextField1.setText("");
         jTextField2.setText("");

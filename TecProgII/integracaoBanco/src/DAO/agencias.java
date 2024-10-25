@@ -107,7 +107,7 @@ public class agencias {
         return foneAge;
     }
     
-    public String dadosSQLInsert(){
+    public String dadosSQLValues(){
         String dadosAgencia;
         dadosAgencia = "'"
         + this.getNumAge()+ "','"

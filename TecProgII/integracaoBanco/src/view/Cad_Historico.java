@@ -102,7 +102,7 @@ public class Cad_Historico extends javax.swing.JFrame {
         
         connectDAO objcon = new connectDAO();
         
-        objcon.insereRegistroJFBD("HISTORICOS",dados_Historico.dadosSQLInsert());
+        objcon.insereRegistroJFBD("HISTORICOS",dados_Historico.dadosSQLValues());
         
         jTextField1.setText("");
         jTextField2.setText("");

@@ -50,7 +50,7 @@ public class contaCorrente {
         this.Saldo = Saldo;
     }
     
-    public String dadosSQLInsert(){
+    public String dadosSQLValues(){
         String dadosContaCorrente;
         dadosContaCorrente = "'"
         + this.getNumAge()+ "','"

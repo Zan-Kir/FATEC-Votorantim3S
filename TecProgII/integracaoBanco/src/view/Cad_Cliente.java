@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
 import DAO.clientes;
@@ -13,22 +10,18 @@ import DAO.connectDAO;
  */
 public class Cad_Cliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cad_Cliente
-     */
-    
     String operacaoAtivaGlobal = "Nenhum";
-    
+
     public Cad_Cliente() {
         initComponents();
     }
-    
-    public Cad_Cliente(String operacaoAtiva){
+
+    public Cad_Cliente(String operacaoAtiva) {
         initComponents();
-        
+
         operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
         String operacao = "Incluir";                    // String para verificar qual é operação que será configurada
-        if (operacaoAtiva.equals(operacao)){
+        if (operacaoAtiva.equals(operacao)) {
             jLabel1.setVisible(true);                      // Para inclusão serão liberados todos os componentes da tela como true para ficarem visíveis
             jLabel2.setVisible(true);
             jLabel3.setVisible(true);
@@ -55,11 +48,10 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jTextField11.setVisible(true);
             jTextField12.setVisible(true);
             jTextField13.setVisible(true);
-//            jComboBox1.setVisible(true);
             jButton1.setText("Incluir");
         }
         operacao = "Alterar";                               // defini a operação como Alterar os dados de um registro
-        if (operacaoAtiva.equals(operacao)){       // para alteração deverá ser setado todos os componentes como false para não visualizar
+        if (operacaoAtiva.equals(operacao)) {       // para alteração deverá ser setado todos os componentes como false para não visualizar
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(false);
             jLabel3.setVisible(false);
@@ -86,11 +78,10 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jTextField11.setVisible(false);
             jTextField12.setVisible(false);
             jTextField13.setVisible(false);
-//            jComboBox1.setVisible(false);
             jButton1.setText("Alterar");
-        }        
+        }
         operacao = "Excluir";                                // defini a operação como Excluir um registro
-        if (operacaoAtiva.equals(operacao)){       // para exclusão deverá ser setado todos os componentes como false para não visualizar
+        if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(false);
             jLabel3.setVisible(false);
@@ -117,9 +108,8 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jTextField11.setVisible(false);
             jTextField12.setVisible(false);
             jTextField13.setVisible(false);
-//            jComboBox1.setVisible(false);
             jButton1.setText("Excluir");
-        }        
+        }
     }
 
     /**
@@ -362,44 +352,41 @@ public class Cad_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        clientes dados_cliente = new clientes();
-        dados_cliente.setIdCli(Integer.parseInt((jTextField1.getText())));
-        dados_cliente.setNomeCli(jTextField2.getText());
-        dados_cliente.setEndeCli(jTextField3.getText());
-        dados_cliente.setNumeCli(jTextField4.getText());
-        dados_cliente.setComplCli(jTextField5.getText());
-        dados_cliente.setBairCli(jTextField6.getText());
-        dados_cliente.setCidaCli(jTextField7.getText());
-        dados_cliente.setUfCli(jTextField8.getText());
-        dados_cliente.setCepCli(jTextField9.getText());
-        dados_cliente.setFoneCli(jTextField10.getText());
-        dados_cliente.setCpfCli(jTextField11.getText());
-        dados_cliente.setDataNasc(jTextField12.getText());
-        dados_cliente.setCnpjCli(jTextField13.getText());
-        
-        
-        
-        
-        connectDAO objcon = new connectDAO();
-        
-        objcon.insereRegistroJFBD("CLIENTES",dados_cliente.dadosSQLInsert());
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-        jTextField10.setText("");
-        jTextField11.setText("");
-        jTextField12.setText("");
-        jTextField13.setText("");
-        
-        
+        String operacao = "Incluir";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            clientes dados_cliente = new clientes();
+            dados_cliente.setIdCli(Integer.parseInt((jTextField1.getText())));
+            dados_cliente.setNomeCli(jTextField2.getText());
+            dados_cliente.setEndeCli(jTextField3.getText());
+            dados_cliente.setNumeCli(jTextField4.getText());
+            dados_cliente.setComplCli(jTextField5.getText());
+            dados_cliente.setBairCli(jTextField6.getText());
+            dados_cliente.setCidaCli(jTextField7.getText());
+            dados_cliente.setUfCli(jTextField8.getText());
+            dados_cliente.setCepCli(jTextField9.getText());
+            dados_cliente.setFoneCli(jTextField10.getText());
+            dados_cliente.setCpfCli(jTextField11.getText());
+            dados_cliente.setDataNasc(jTextField12.getText());
+            dados_cliente.setCnpjCli(jTextField13.getText());
+
+            connectDAO objcon = new connectDAO();
+
+            objcon.insereRegistroJFBD("CLIENTES", dados_cliente.dadosSQLValues());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+            jTextField11.setText("");
+            jTextField12.setText("");
+            jTextField13.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed

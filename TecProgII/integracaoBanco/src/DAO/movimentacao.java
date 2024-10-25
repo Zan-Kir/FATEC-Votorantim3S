@@ -100,7 +100,7 @@ public class movimentacao {
         this.saldo = saldo;
     }
     
-        public String dadosSQLInsert(){
+        public String dadosSQLValues(){
         String dadosMovimentacao;
         dadosMovimentacao = "'"
         + this.getNumAge()+ "','"

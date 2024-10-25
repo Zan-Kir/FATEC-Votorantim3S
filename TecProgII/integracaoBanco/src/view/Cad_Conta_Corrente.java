@@ -136,7 +136,7 @@ public class Cad_Conta_Corrente extends javax.swing.JFrame {
         
         connectDAO objcon = new connectDAO();
         
-        objcon.insereRegistroJFBD("CONTACORRENTE",dados_Conta_Corrente.dadosSQLInsert());
+        objcon.insereRegistroJFBD("CONTACORRENTE",dados_Conta_Corrente.dadosSQLValues());
         
         jTextField1.setText("");
         jTextField2.setText("");
