@@ -13,11 +13,51 @@ import DAO.connectDAO;
  */
 public class Cad_Conta_Corrente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cad_Cliente
-     */
+    String operacaoAtivaGlobal = "Nenhum";
+
     public Cad_Conta_Corrente() {
         initComponents();
+    }
+
+    public Cad_Conta_Corrente(String operacaoAtiva) {
+        initComponents();
+        operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
+        String operacao = "Incluir";                    // String para verificar qual é operação que será configurada
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(true);                      // Para inclusão serão liberados todos os componentes da tela como true para ficarem visíveis
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jButton1.setText("Incluir");
+        }
+        operacao = "Alterar";                               // defini a operação como Alterar os dados de um registro
+        if (operacaoAtiva.equals(operacao)) {       // para alteração deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jButton1.setText("Alterar");
+        }
+        operacao = "Excluir";                                // defini a operação como Excluir um registro
+        if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jButton1.setText("Excluir");
+        }
     }
 
     /**
@@ -125,25 +165,23 @@ public class Cad_Conta_Corrente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        contaCorrente dados_Conta_Corrente = new contaCorrente();
-        dados_Conta_Corrente.setNumAge(Integer.parseInt((jTextField1.getText())));
-        dados_Conta_Corrente.setNumCc(Integer.parseInt((jTextField2.getText())));
-        dados_Conta_Corrente.setIdCli(Integer.parseInt((jTextField3.getText())));
-        dados_Conta_Corrente.setSaldo(Integer.parseInt((jTextField4.getText())));       
-        
-        
-        
-        connectDAO objcon = new connectDAO();
-        
-        objcon.insereRegistroJFBD("CONTACORRENTE",dados_Conta_Corrente.dadosSQLValues());
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        
-        
+        String operacao = "Incluir";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            contaCorrente dados_Conta_Corrente = new contaCorrente();
+            dados_Conta_Corrente.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_Conta_Corrente.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_Conta_Corrente.setIdCli(Integer.parseInt((jTextField3.getText())));
+            dados_Conta_Corrente.setSaldo(Integer.parseInt((jTextField4.getText())));
+
+            connectDAO objcon = new connectDAO();
+
+            objcon.insereRegistroJFBD("CONTACORRENTE", dados_Conta_Corrente.dadosSQLValues());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

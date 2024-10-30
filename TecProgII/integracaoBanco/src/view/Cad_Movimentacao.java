@@ -13,11 +13,82 @@ import DAO.connectDAO;
  */
 public class Cad_Movimentacao extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cad_Cliente
-     */
+    String operacaoAtivaGlobal = "Nenhum";
+
     public Cad_Movimentacao() {
         initComponents();
+    }
+
+    public Cad_Movimentacao(String operacaoAtiva) {
+        initComponents();
+
+        operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
+        String operacao = "Incluir";                    // String para verificar qual é operação que será configurada
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(true);                      // Para inclusão serão liberados todos os componentes da tela como true para ficarem visíveis
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField7.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField9.setVisible(true);
+            jButton1.setText("Incluir");
+        }
+        operacao = "Alterar";                               // defini a operação como Alterar os dados de um registro
+        if (operacaoAtiva.equals(operacao)) {       // para alteração deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jTextField5.setVisible(false);
+            jTextField6.setVisible(false);
+            jTextField7.setVisible(false);
+            jTextField8.setVisible(false);
+            jTextField9.setVisible(false);
+            jButton1.setText("Alterar");
+        }
+        operacao = "Excluir";                                // defini a operação como Excluir um registro
+        if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jTextField5.setVisible(false);
+            jTextField6.setVisible(false);
+            jTextField7.setVisible(false);
+            jTextField8.setVisible(false);
+            jTextField9.setVisible(false);
+            jButton1.setText("Excluir");
+        }
     }
 
     /**
@@ -183,38 +254,35 @@ public class Cad_Movimentacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        movimentacao dados_movimentacao = new movimentacao();
-        dados_movimentacao.setNumAge(Integer.parseInt((jTextField1.getText())));
-        dados_movimentacao.setNumCc(Integer.parseInt((jTextField2.getText())));
-        dados_movimentacao.setDataMov(jTextField3.getText());
-        dados_movimentacao.setNumDocto(jTextField4.getText());
-        dados_movimentacao.setDebitoCredito(jTextField5.getText());
-        dados_movimentacao.setIdHis(Integer.parseInt((jTextField1.getText())));
-        dados_movimentacao.setComplHis(jTextField7.getText());
-        dados_movimentacao.setValor(Integer.parseInt((jTextField1.getText())));
-        dados_movimentacao.setSaldo(Integer.parseInt((jTextField1.getText())));
+        String operacao = "Incluir";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            movimentacao dados_movimentacao = new movimentacao();
+            dados_movimentacao.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_movimentacao.setDataMov(jTextField3.getText());
+            dados_movimentacao.setNumDocto(jTextField4.getText());
+            dados_movimentacao.setDebitoCredito(jTextField5.getText());
+            dados_movimentacao.setIdHis(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setComplHis(jTextField7.getText());
+            dados_movimentacao.setValor(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setSaldo(Integer.parseInt((jTextField1.getText())));
 
-        
-        
-        
-        
-        connectDAO objcon = new connectDAO();
-        
-        objcon.insereRegistroJFBD("MOVIMENTACAO",dados_movimentacao.dadosSQLValues());
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
+            connectDAO objcon = new connectDAO();
 
-        
-        
+            objcon.insereRegistroJFBD("MOVIMENTACAO", dados_movimentacao.dadosSQLValues());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

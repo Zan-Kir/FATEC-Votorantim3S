@@ -4,7 +4,6 @@
  */
 package view;
 
-
 import DAO.connectDAO;
 import DAO.usuarios;
 
@@ -14,11 +13,52 @@ import DAO.usuarios;
  */
 public class Cad_Usuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cad_Cliente
-     */
+    String operacaoAtivaGlobal = "Nenhum";
+
     public Cad_Usuario() {
         initComponents();
+    }
+
+    public Cad_Usuario(String operacaoAtiva) {
+        initComponents();
+
+        operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
+        String operacao = "Incluir";                    // String para verificar qual é operação que será configurada
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(true);                      // Para inclusão serão liberados todos os componentes da tela como true para ficarem visíveis
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jButton1.setText("Incluir");
+        }
+        operacao = "Alterar";                               // defini a operação como Alterar os dados de um registro
+        if (operacaoAtiva.equals(operacao)) {       // para alteração deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jButton1.setText("Alterar");
+        }
+        operacao = "Excluir";                                // defini a operação como Excluir um registro
+        if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField4.setVisible(false);
+            jButton1.setText("Excluir");
+        }
     }
 
     /**
@@ -124,26 +164,24 @@ public class Cad_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        usuarios dados_usuario = new usuarios();
-        dados_usuario.setId(jTextField2.getText());
-        dados_usuario.setSenha(jTextField2.getText());
-        dados_usuario.setNumAge(Integer.parseInt((jTextField1.getText())));
-        dados_usuario.setNumCc(Integer.parseInt((jTextField1.getText())));
-        
-        
-        
-        
-        connectDAO objcon = new connectDAO();
-        
-        objcon.insereRegistroJFBD("USUARIOS",dados_usuario.dadosSQLValues());
-        
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        
-        
+        String operacao = "Incluir";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            usuarios dados_usuario = new usuarios();
+            dados_usuario.setId(jTextField2.getText());
+            dados_usuario.setSenha(jTextField2.getText());
+            dados_usuario.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_usuario.setNumCc(Integer.parseInt((jTextField1.getText())));
+
+            connectDAO objcon = new connectDAO();
+
+            objcon.insereRegistroJFBD("USUARIOS", dados_usuario.dadosSQLValues());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
