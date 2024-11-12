@@ -4,7 +4,7 @@ exports.getUser = void 0;
 const getUser = (_req, res) => {
     const user = {
         id: 1,
-        name: 'João',
+        name: 'João Silva',
         age: 18
     };
     res.json(user);
