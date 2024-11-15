@@ -1,4 +1,3 @@
-
 package view;
 
 import DAO.clientes;
@@ -11,6 +10,7 @@ import DAO.connectDAO;
 public class cadCliente extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
+    clientes cliente_tela = new clientes();
 
     public cadCliente() {
         initComponents();
@@ -386,6 +386,55 @@ public class cadCliente extends javax.swing.JFrame {
             jTextField11.setText("");
             jTextField12.setText("");
             jTextField13.setText("");
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            cliente_tela = objcon.pesquisaClienteJFBD("CLIENTES", "Cod_Cliente = '" + jTextField1.getText() + "'");
+
+            jTextField2.setText(cliente_tela.getNomeCli());
+            jTextField3.setText(cliente_tela.getEndeCli());
+            jTextField4.setText(cliente_tela.getNumeCli());
+            jTextField5.setText(cliente_tela.getComplCli());
+            jTextField6.setText(cliente_tela.getBairCli());
+            jTextField7.setText(cliente_tela.getCidaCli());
+            jTextField8.setText(cliente_tela.getUfCli());
+            jTextField9.setText(cliente_tela.getCepCli());
+            jTextField10.setText(cliente_tela.getFoneCli());
+            jTextField11.setText(cliente_tela.getCpfCli());
+            jTextField12.setText(cliente_tela.getDataNasc());
+            jTextField13.setText(cliente_tela.getCnpjCli());
+            
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jLabel11.setVisible(true);
+            jLabel12.setVisible(true);
+            jLabel13.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField7.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField9.setVisible(true);
+            jTextField10.setVisible(true);
+            jTextField11.setVisible(true);
+            jTextField12.setVisible(true);
+            jTextField13.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
