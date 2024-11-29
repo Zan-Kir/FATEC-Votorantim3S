@@ -3,10 +3,6 @@ package view;
 import DAO.clientes;
 import DAO.connectDAO;
 
-/**
- *
- * @author Alunos
- */
 public class cadCliente extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
@@ -389,6 +385,7 @@ public class cadCliente extends javax.swing.JFrame {
         }
 
         operacao = "Alteração";
+
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
@@ -423,6 +420,7 @@ public class cadCliente extends javax.swing.JFrame {
             jTextField12.setText("");
             jTextField13.setText("");
         }
+
         operacao = "Alterar";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
@@ -470,6 +468,92 @@ public class cadCliente extends javax.swing.JFrame {
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
         }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            clientes dados_cliente = new clientes();
+            dados_cliente.setIdCli(Integer.parseInt(jTextField1.getText()));
+
+            objcon.excluiRegistroJFBD("CLIENTES", dados_cliente.excluiSQLValues(), "ID_CLI=" + dados_cliente.getIdCli());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+            jTextField11.setText("");
+            jTextField12.setText("");
+            jTextField13.setText("");
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            cliente_tela = objcon.pesquisaClienteJFBD("CLIENTES", "ID_CLI = '" + jTextField1.getText() + "'");
+            jTextField2.setText(cliente_tela.getNomeCli());
+            jTextField3.setText(cliente_tela.getEndeCli());
+            jTextField4.setText(cliente_tela.getNumeCli());
+            jTextField5.setText(cliente_tela.getComplCli());
+            jTextField6.setText(cliente_tela.getBairCli());
+            jTextField7.setText(cliente_tela.getCidaCli());
+            jTextField8.setText(cliente_tela.getUfCli());
+            jTextField9.setText(cliente_tela.getCepCli());
+            jTextField10.setText(cliente_tela.getFoneCli());
+            jTextField11.setText(cliente_tela.getCpfCli());
+            jTextField12.setText(cliente_tela.getDataNasc());
+            jTextField13.setText(cliente_tela.getCnpjCli());
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jLabel11.setVisible(true);
+            jLabel12.setVisible(true);
+            jLabel13.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jTextField3.setVisible(true);
+            jTextField3.setEnabled(false);
+            jTextField4.setVisible(true);
+            jTextField4.setEnabled(false);
+            jTextField5.setVisible(true);
+            jTextField5.setEnabled(false);
+            jTextField6.setVisible(true);
+            jTextField6.setEnabled(false);
+            jTextField7.setVisible(true);
+            jTextField7.setEnabled(false);
+            jTextField8.setVisible(true);
+            jTextField8.setEnabled(false);
+            jTextField9.setVisible(true);
+            jTextField9.setEnabled(false);
+            jTextField10.setVisible(true);
+            jTextField10.setEnabled(false);
+            jTextField11.setVisible(true);
+            jTextField11.setEnabled(false);
+            jTextField12.setVisible(true);
+            jTextField12.setEnabled(false);
+            jTextField13.setVisible(true);
+            jTextField13.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
+        }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

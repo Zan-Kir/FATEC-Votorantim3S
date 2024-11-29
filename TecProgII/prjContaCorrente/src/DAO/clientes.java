@@ -1,9 +1,9 @@
-
 package DAO;
 
 import java.util.Date;
 
 public class clientes {
+
     int idCli;
     String nomeCli;
     String endeCli;
@@ -26,11 +26,9 @@ public class clientes {
         this.ufCli = ufCli;
         this.cepCli = cepCli;
     }*/
-    
-    public clientes (){
+    public clientes() {
 
     }
-    
 
     public void setIdCli(int idCli) {
         this.idCli = idCli;
@@ -84,7 +82,6 @@ public class clientes {
         this.cnpjCli = cnpjCli;
     }
 
-    
     public int getIdCli() {
         return idCli;
     }
@@ -136,44 +133,49 @@ public class clientes {
     public String getCnpjCli() {
         return cnpjCli;
     }
-    
-    public String dadosSQLValues(){
+
+    public String dadosSQLValues() {
         String dadosClientes;
         dadosClientes = "'"
-        + this.getIdCli() + "','"
-	+ this.getNomeCli() + "','"
-	+ this.getEndeCli() + "','"
-	+ this.getNumeCli() + "','"
-	+ this.getComplCli() + "','"
-	+ this.getBairCli()  + "','"
-	+ this.getCidaCli() + "','"
-	+ this.getUfCli() + "','"
-	+ this.getCepCli() + "','"
-	+ this.getFoneCli() + "','"
-	+ this.getCpfCli() + "','"
-	+ this.getDataNasc() + "','"
-	+ this.getCnpjCli() + "'";
-        
+                + this.getIdCli() + "','"
+                + this.getNomeCli() + "','"
+                + this.getEndeCli() + "','"
+                + this.getNumeCli() + "','"
+                + this.getComplCli() + "','"
+                + this.getBairCli() + "','"
+                + this.getCidaCli() + "','"
+                + this.getUfCli() + "','"
+                + this.getCepCli() + "','"
+                + this.getFoneCli() + "','"
+                + this.getCpfCli() + "','"
+                + this.getDataNasc() + "','"
+                + this.getCnpjCli() + "'";
+
         return dadosClientes;
     }
-    
-    public String alteraSQLValues(){
+
+    public String alteraSQLValues() {
         String dadosClientes;
         dadosClientes = "ID_CLI='"
-        + this.getIdCli() + "',NOME_CLI='"
-	+ this.getNomeCli() + "',ENDE_CLI='"
-	+ this.getEndeCli() + "',NUME_CLI='"
-	+ this.getNumeCli() + "',COMPL_CLI='"
-	+ this.getComplCli() + "',BAIR_CLI='"
-	+ this.getBairCli()  + "',CIDA_CLI='"
-	+ this.getCidaCli() + "',UF_CLI='"
-	+ this.getUfCli() + "',CEP_CLI='"
-	+ this.getCepCli() + "',FONE_CLI='"
-	+ this.getFoneCli() + "',CPF_CLI='"
-	+ this.getCpfCli() + "',DATA_NASC='"
-	+ this.getDataNasc() + "',CNPJ_CLI='"
-	+ this.getCnpjCli() + "'";
-        
+                + this.getIdCli() + "',NOME_CLI='"
+                + this.getNomeCli() + "',ENDE_CLI='"
+                + this.getEndeCli() + "',NUME_CLI='"
+                + this.getNumeCli() + "',COMPL_CLI='"
+                + this.getComplCli() + "',BAIR_CLI='"
+                + this.getBairCli() + "',CIDA_CLI='"
+                + this.getCidaCli() + "',UF_CLI='"
+                + this.getUfCli() + "',CEP_CLI='"
+                + this.getCepCli() + "',FONE_CLI='"
+                + this.getFoneCli() + "',CPF_CLI='"
+                + this.getCpfCli() + "',DATA_NASC='"
+                + this.getDataNasc() + "',CNPJ_CLI='"
+                + this.getCnpjCli() + "'";
+
         return dadosClientes;
     }
+
+    public String excluiSQLValues() {
+        return "ID_CLI='" + this.getIdCli() + "'";
+    }
+
 }
