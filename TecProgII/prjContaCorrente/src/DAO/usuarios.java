@@ -60,4 +60,14 @@ public class usuarios {
         
         return dadosClientes;
     }
+    
+    public String alteraDadosSQLValue(){
+        String dadosClientes;
+        dadosClientes = "'ID_USUARIO="
+        + this.getId()+ "',SENHA='"
+	+ this.getSenha()+ "',NUM_AGE='"
+	+ this.getNumAge()+ "',NUM_CC'"
+	+ this.getNumCc()+ "'";
+        return dadosClientes;
+    }
 }

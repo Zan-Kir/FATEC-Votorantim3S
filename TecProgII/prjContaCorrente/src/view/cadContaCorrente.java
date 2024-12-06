@@ -14,6 +14,7 @@ import DAO.connectDAO;
 public class cadContaCorrente extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
+    contaCorrente cc_tela = new contaCorrente();
 
     public cadContaCorrente() {
         initComponents();
@@ -171,7 +172,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
             dados_Conta_Corrente.setNumAge(Integer.parseInt((jTextField1.getText())));
             dados_Conta_Corrente.setNumCc(Integer.parseInt((jTextField2.getText())));
             dados_Conta_Corrente.setIdCli(Integer.parseInt((jTextField3.getText())));
-            dados_Conta_Corrente.setSaldo(Integer.parseInt((jTextField4.getText())));
+            dados_Conta_Corrente.setSaldo(Double.parseDouble((jTextField4.getText())));
 
             connectDAO objcon = new connectDAO();
 
@@ -181,6 +182,87 @@ public class cadContaCorrente extends javax.swing.JFrame {
             jTextField2.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
+        }
+        
+        operacao = "Alteração";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            contaCorrente dados_contaCorrente = new contaCorrente();
+            dados_contaCorrente.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_contaCorrente.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_contaCorrente.setIdCli(Integer.parseInt((jTextField3.getText())));
+            dados_contaCorrente.setSaldo(Double.parseDouble((jTextField4.getText())));
+            objcon.alteraRegistroJFBD("CONTACORRENTE", dados_contaCorrente.alteraDadosSQLValues(), "NUM_AGE=" + jTextField1.getText());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            cc_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(cc_tela.getNumCc()));
+            jTextField3.setText(String.valueOf(cc_tela.getIdCli()));
+            jTextField4.setText(String.valueOf(cc_tela.getSaldo()));
+ 
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
+        }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            contaCorrente dados_contaCorrente = new contaCorrente();
+            dados_contaCorrente.setNumAge(Integer.parseInt(jTextField1.getText()));
+
+            objcon.excluiRegistroJFBD("AGENCIAS", dados_contaCorrente.excluiSQLValues(), "NUM_AGE=" + dados_contaCorrente.getNumAge());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            cc_tela = objcon.pesquisaContaCorrenteJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(cc_tela.getNumCc()));
+            jTextField3.setText(String.valueOf(cc_tela.getIdCli()));
+            jTextField4.setText(String.valueOf(cc_tela.getSaldo()));
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jTextField3.setVisible(true);
+            jTextField3.setEnabled(false);
+            jTextField4.setVisible(true);
+            jTextField4.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

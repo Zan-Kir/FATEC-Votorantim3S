@@ -14,6 +14,7 @@ import DAO.connectDAO;
 public class cadMovimentacao extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
+    movimentacao movimentacao_tela = new movimentacao();
 
     public cadMovimentacao() {
         initComponents();
@@ -280,7 +281,136 @@ public class cadMovimentacao extends javax.swing.JFrame {
             jTextField7.setText("");
             jTextField8.setText("");
             jTextField9.setText("");
+        }
+        
+        operacao = "Alteração";
 
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            movimentacao dados_movimentacao = new movimentacao();
+            dados_movimentacao.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_movimentacao.setDataMov(jTextField3.getText());
+            dados_movimentacao.setNumDocto(jTextField4.getText());
+            dados_movimentacao.setDebitoCredito(jTextField5.getText());
+            dados_movimentacao.setIdHis(Integer.parseInt(jTextField6.getText()));
+            dados_movimentacao.setComplHis(jTextField7.getText());
+            dados_movimentacao.setValor(Integer.parseInt(jTextField8.getText()));
+            dados_movimentacao.setSaldo(Integer.parseInt(jTextField9.getText()));
+
+            objcon.alteraRegistroJFBD("MOVIMENTACAO", dados_movimentacao.alteraDadosSQLValue(), "NUM_AGE=" + jTextField1.getText());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(movimentacao_tela.getNumCc()));
+            jTextField3.setText(movimentacao_tela.getDataMov());
+            jTextField4.setText(movimentacao_tela.getNumDocto());
+            jTextField5.setText(movimentacao_tela.getDebitoCredito());
+            jTextField6.setText(String.valueOf(movimentacao_tela.getIdHis()));
+            jTextField7.setText(movimentacao_tela.getComplHis());
+            jTextField8.setText(String.valueOf(movimentacao_tela.getValor()));
+            jTextField9.setText(String.valueOf(movimentacao_tela.getSaldo()));
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField7.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField9.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
+        }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            movimentacao dados_movimentacao = new movimentacao();
+            movimentacao_tela.setNumAge(Integer.parseInt(jTextField1.getText()));
+
+            objcon.excluiRegistroJFBD("MOVIMENTACAO", dados_movimentacao.excluiSQLValues(), "NUM_AGE=" + movimentacao_tela.getNumAge());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO", "NUM_AGE = '" + jTextField1.getText() + "'");
+              jTextField2.setText(String.valueOf(movimentacao_tela.getNumCc()));
+            jTextField3.setText(movimentacao_tela.getDataMov());
+            jTextField4.setText(movimentacao_tela.getNumDocto());
+            jTextField5.setText(movimentacao_tela.getDebitoCredito());
+            jTextField6.setText(String.valueOf(movimentacao_tela.getIdHis()));
+            jTextField7.setText(movimentacao_tela.getComplHis());
+            jTextField8.setText(String.valueOf(movimentacao_tela.getValor()));
+            jTextField9.setText(String.valueOf(movimentacao_tela.getSaldo()));
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jTextField3.setVisible(true);
+            jTextField3.setEnabled(false);
+            jTextField4.setVisible(true);
+            jTextField4.setEnabled(false);
+            jTextField5.setVisible(true);
+            jTextField5.setEnabled(false);
+            jTextField6.setVisible(true);
+            jTextField6.setEnabled(false);
+            jTextField7.setVisible(true);
+            jTextField7.setEnabled(false);
+            jTextField8.setVisible(true);
+            jTextField8.setEnabled(false);
+            jTextField9.setVisible(true);
+            jTextField9.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

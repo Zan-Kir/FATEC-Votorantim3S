@@ -1,9 +1,9 @@
-
 package DAO;
 
 import java.util.Date;
 
 public class movimentacao {
+
     int numAge;
     int numCc;
     String dataMov;
@@ -23,9 +23,8 @@ public class movimentacao {
         this.idHis = idHis;
         this.valor = valor;
     }*/
-    
-    public movimentacao(){
-        
+    public movimentacao() {
+
     }
 
     public int getNumAge() {
@@ -99,20 +98,40 @@ public class movimentacao {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    
-        public String dadosSQLValues(){
+
+    public String dadosSQLValues() {
         String dadosMovimentacao;
         dadosMovimentacao = "'"
-        + this.getNumAge()+ "','"
-	+ this.getNumCc() + "','"
-	+ this.getDataMov()+ "','"
-	+ this.getNumDocto()+ "','"
-	+ this.getDebitoCredito()+ "','"
-	+ this.getIdHis()+ "','"
-	+ this.getComplHis()+ "','"
-	+ this.getValor()+ "','"
-	+ this.getSaldo()+ "'";
-        
+                + this.getNumAge() + "','"
+                + this.getNumCc() + "','"
+                + this.getDataMov() + "','"
+                + this.getNumDocto() + "','"
+                + this.getDebitoCredito() + "','"
+                + this.getIdHis() + "','"
+                + this.getComplHis() + "','"
+                + this.getValor() + "','"
+                + this.getSaldo() + "'";
+
         return dadosMovimentacao;
     }
+
+    public String alteraDadosSQLValue() {
+        String dadosMovimentacao;
+        dadosMovimentacao = "'NUM_AGE="
+                + this.getNumAge() + "',NUM_CC='"
+                + this.getNumCc() + "',DATA_MOV='"
+                + this.getDataMov() + "',NUM_DOCTO='"
+                + this.getNumDocto() + "',DEB_CRED='"
+                + this.getDebitoCredito() + "',ID_HIS='"
+                + this.getIdHis() + "',COMPL_HIS'"
+                + this.getComplHis() + "',VALOR='"
+                + this.getValor() + "',SALDO='"
+                + this.getSaldo() + "'";
+        return dadosMovimentacao;
+    }
+
+    public String excluiSQLValues() {
+        return "NUM_AGE='" + this.getNumAge() + "'";
+    }
+
 }

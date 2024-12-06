@@ -17,6 +17,7 @@ public class cadAgencia extends javax.swing.JFrame {
      * Creates new form Cad_Cliente
      */
     String operacaoAtivaGlobal = "Nenhum";
+    agencias agencia_tela = new agencias();
 
     public cadAgencia() {
         initComponents();
@@ -317,6 +318,148 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField9.setText("");
             jTextField10.setText("");
 
+        }
+        
+        operacao = "Alteração";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            agencias dados_agencia = new agencias();
+            dados_agencia.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_agencia.setNomeAge(jTextField2.getText());
+            dados_agencia.setEndeAge(jTextField3.getText());
+            dados_agencia.setNumeAge(jTextField4.getText());
+            dados_agencia.setComplAge(jTextField5.getText());
+            dados_agencia.setBairAre(jTextField6.getText());
+            dados_agencia.setCidaAge(jTextField7.getText());
+            dados_agencia.setUfAge(jTextField8.getText());
+            dados_agencia.setCepAge(jTextField9.getText());
+            dados_agencia.setFoneAge(jTextField10.getText());
+
+            objcon.alteraRegistroJFBD("AGENCIAS", dados_agencia.alteraDadosSQLValue(), "NUM_AGE=" + jTextField1.getText());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(agencia_tela.getNomeAge());
+            jTextField3.setText(agencia_tela.getEndeAge());
+            jTextField4.setText(agencia_tela.getNumeAge());
+            jTextField5.setText(agencia_tela.getComplAge());
+            jTextField6.setText(agencia_tela.getBairAre());
+            jTextField7.setText(agencia_tela.getCidaAge());
+            jTextField8.setText(agencia_tela.getUfAge());
+            jTextField9.setText(agencia_tela.getCepAge());
+            jTextField10.setText(agencia_tela.getFoneAge());
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField7.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField9.setVisible(true);
+            jTextField10.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
+        }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            agencias dados_agencia = new agencias();
+            dados_agencia.setNumAge(Integer.parseInt(jTextField1.getText()));
+
+            objcon.excluiRegistroJFBD("AGENCIAS", dados_agencia.excluiSQLValues(), "NUM_AGE=" + dados_agencia.getNumAge());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(agencia_tela.getNomeAge());
+            jTextField3.setText(agencia_tela.getEndeAge());
+            jTextField4.setText(agencia_tela.getNumeAge());
+            jTextField5.setText(agencia_tela.getComplAge());
+            jTextField6.setText(agencia_tela.getBairAre());
+            jTextField7.setText(agencia_tela.getCidaAge());
+            jTextField8.setText(agencia_tela.getUfAge());
+            jTextField9.setText(agencia_tela.getCepAge());
+            jTextField10.setText(agencia_tela.getFoneAge());
+
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jTextField3.setVisible(true);
+            jTextField3.setEnabled(false);
+            jTextField4.setVisible(true);
+            jTextField4.setEnabled(false);
+            jTextField5.setVisible(true);
+            jTextField5.setEnabled(false);
+            jTextField6.setVisible(true);
+            jTextField6.setEnabled(false);
+            jTextField7.setVisible(true);
+            jTextField7.setEnabled(false);
+            jTextField8.setVisible(true);
+            jTextField8.setEnabled(false);
+            jTextField9.setVisible(true);
+            jTextField9.setEnabled(false);
+            jTextField10.setVisible(true);
+            jTextField10.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -124,4 +124,25 @@ public class agencias {
         return dadosAgencia;
     }
     
+        public String alteraDadosSQLValue(){
+        String dadosAgencia;
+        dadosAgencia = "'NUM_AGE='"
+        + this.getNumAge()+ "',NOME_AGE='"
+	+ this.getNomeAge()+ "',ENDE_AGE='"
+	+ this.getEndeAge()+ "',NUM_AGE='"
+	+ this.getNumeAge()+ "',COMPL_AGE='"
+	+ this.getComplAge()+ "',BAIR_AGE='"
+	+ this.getBairAre()+ "',CIDA_AGE='"
+	+ this.getCidaAge()+ "',UF_AGE='"
+	+ this.getUfAge()+ "',CEP_AGE='"
+	+ this.getCepAge()+ "',FONE_AGE='"
+	+ this.getFoneAge()+ "'";
+        return dadosAgencia;
+    }
+    
+        
+    public String excluiSQLValues() {
+        return "NUM_AGE='" + this.getNumAge() + "'";
+    }
+    
 }

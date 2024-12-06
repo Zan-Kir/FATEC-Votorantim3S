@@ -14,6 +14,7 @@ import DAO.historicos;
 public class cadHistorico extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
+    historicos historico_tela = new historicos();
 
     public cadHistorico() {
         initComponents();
@@ -131,6 +132,68 @@ public class cadHistorico extends javax.swing.JFrame {
             jTextField1.setText("");
             jTextField2.setText("");
 
+        }
+        
+        operacao = "Alteração";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            historicos dados_historico = new historicos();
+            dados_historico.setIdHis(Integer.parseInt((jTextField1.getText())));
+            dados_historico.setDesHis(jTextField2.getText());
+            objcon.alteraRegistroJFBD("HISTORICOS", dados_historico.alteraDadosSQLValues(), "ID_HIS=" + jTextField1.getText());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            historico_tela = objcon.pesquisaHistoricoJFBD("HISTORICOS", "ID_HIS = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(historico_tela.getIdHis()));
+ 
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
+        }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            historicos dados_historico = new historicos();
+            dados_historico.setIdHis(Integer.parseInt(jTextField1.getText()));
+
+            objcon.excluiRegistroJFBD("HISTORICOS", dados_historico.excluiSQLValues(), "ID_HIS=" + dados_historico.getIdHis());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            historico_tela = objcon.pesquisaHistoricoJFBD("HISTORICOS", "ID_HIS = '" + jTextField1.getText() + "'");
+            jTextField2.setText(historico_tela.getDesHis());
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

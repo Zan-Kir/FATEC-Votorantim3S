@@ -1,7 +1,7 @@
-
 package DAO;
 
 public class historicos {
+
     int idHis;
     String desHis;
 
@@ -9,11 +9,9 @@ public class historicos {
         this.idHis = idHis;
         this.desHis = desHis;
     }*/
-    
-    public historicos(){
-        
+    public historicos() {
+
     }
-    
 
     public int getIdHis() {
         return idHis;
@@ -30,14 +28,27 @@ public class historicos {
     public void setDesHis(String desHis) {
         this.desHis = desHis;
     }
-    
-    public String dadosSQLValues(){
+
+    public String dadosSQLValues() {
         String dadosHistorico;
         dadosHistorico = "'"
-        + this.getIdHis()+ "','"
-	+ this.getDesHis()+ "'";
-        
+                + this.getIdHis() + "','"
+                + this.getDesHis() + "'";
+
         return dadosHistorico;
     }
-    
+
+    public String alteraDadosSQLValues() {
+        String dadosHistorico;
+        dadosHistorico = "'ID_HIS='"
+                + this.getIdHis() + "',DES_HIS='"
+                + this.getDesHis() + "'";
+
+        return dadosHistorico;
+    }
+
+    public String excluiSQLValues() {
+        return "ID_HIS='" + this.getIdHis() + "'";
+    }
+
 }

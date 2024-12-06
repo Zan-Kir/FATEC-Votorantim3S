@@ -1,22 +1,20 @@
-
 package DAO;
 
 public class contaCorrente {
+
     int numAge;
     int numCc;
     int idCli;
-    int Saldo;
+    double Saldo;
 
     /*public contaCorrente(int numAge, int numCc, int idCli) {
         this.numAge = numAge;
         this.numCc = numCc;
         this.idCli = idCli;
     }*/
-    
-    public contaCorrente(){
-        
+    public contaCorrente() {
+
     }
-    
 
     public int getNumAge() {
         return numAge;
@@ -30,7 +28,7 @@ public class contaCorrente {
         return idCli;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return Saldo;
     }
 
@@ -46,18 +44,33 @@ public class contaCorrente {
         this.idCli = idCli;
     }
 
-    public void setSaldo(int Saldo) {
+    public void setSaldo(double Saldo) {
         this.Saldo = Saldo;
     }
-    
-    public String dadosSQLValues(){
+
+    public String dadosSQLValues() {
         String dadosContaCorrente;
         dadosContaCorrente = "'"
-        + this.getNumAge()+ "','"
-	+ this.getNumCc()+ "','"
-	+ this.getIdCli()+ "','"
-	+ this.getSaldo()+ "'";
-        
+                + this.getNumAge() + "','"
+                + this.getNumCc() + "','"
+                + this.getIdCli() + "','"
+                + this.getSaldo() + "'";
+
         return dadosContaCorrente;
+    }
+
+    public String alteraDadosSQLValues() {
+        String dadosContaCorrente;
+        dadosContaCorrente = "'NUM_AGE='"
+                + this.getNumAge() + "',NUM_CC='"
+                + this.getNumCc() + "',ID_CLI='"
+                + this.getIdCli() + "',SALDO='"
+                + this.getSaldo() + "'";
+
+        return dadosContaCorrente;
+    }
+
+    public String excluiSQLValues() {
+        return "NUM_AGE='" + this.getNumAge() + "'";
     }
 }

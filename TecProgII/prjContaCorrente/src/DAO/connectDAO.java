@@ -106,6 +106,175 @@ public class connectDAO {
 
     }
 
+    public agencias pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
+        agencias agenciasReturn = new agencias();
+        String tabelaSGBD = "AGENCIAS";
+        if (tabela.equals(tabelaSGBD)) {
+
+            con = connectDB();
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                String sql = "SELECT * FROM " + tabela
+                        + " Where " + pesquisaId;
+
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if (dados.next() == false) {
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa consulta");
+                    } else {
+                        agenciasReturn.setNumAge(dados.getInt(1));
+                        agenciasReturn.setNomeAge(dados.getString(2));
+                        agenciasReturn.setEndeAge(dados.getString(3));
+                        agenciasReturn.setNumeAge(dados.getString(4));
+                        agenciasReturn.setComplAge(dados.getString(5));
+                        agenciasReturn.setBairAre(dados.getString(6));
+                        agenciasReturn.setCidaAge(dados.getString(7));
+                        agenciasReturn.setUfAge(dados.getString(8));
+                        agenciasReturn.setCepAge(dados.getString(9));
+                        agenciasReturn.setFoneAge(dados.getString(10));
+                    }
+                    con.close();
+
+                    return agenciasReturn;
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return agenciasReturn;
+
+    }
+
+    public contaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId) {
+        contaCorrente ccReturn = new contaCorrente();
+        String tabelaSGBD = "CONTACORRENTE";
+        if (tabela.equals(tabelaSGBD)) {
+
+            con = connectDB();
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                String sql = "SELECT * FROM " + tabela
+                        + " Where " + pesquisaId;
+
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if (dados.next() == false) {
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa consulta");
+                    } else {
+                        ccReturn.setNumAge(dados.getInt(1));
+                        ccReturn.setNumCc(dados.getInt(2));
+                        ccReturn.setIdCli(dados.getInt(3));
+                        ccReturn.setSaldo(dados.getInt(4));
+                    }
+                    con.close();
+
+                    return ccReturn;
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return ccReturn;
+
+    }
+
+    public historicos pesquisaHistoricoJFBD(String tabela, String pesquisaId) {
+        historicos historicoReturn = new historicos();
+        String tabelaSGBD = "HISTORICOS";
+        if (tabela.equals(tabelaSGBD)) {
+
+            con = connectDB();
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                String sql = "SELECT * FROM " + tabela
+                        + " Where " + pesquisaId;
+
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if (dados.next() == false) {
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa consulta");
+                    } else {
+                        historicoReturn.setIdHis(dados.getInt(1));
+                        historicoReturn.setDesHis(dados.getString(2));
+                    }
+                    con.close();
+
+                    return historicoReturn;
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return historicoReturn;
+
+    }
+
+    public movimentacao pesquisaMovimentacaoJFBD(String tabela, String pesquisaId) {
+        movimentacao movimentacaoReturn = new movimentacao();
+        String tabelaSGBD = "CLIENTES";
+        if (tabela.equals(tabelaSGBD)) {
+
+            con = connectDB();
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                String sql = "SELECT * FROM " + tabela
+                        + " Where " + pesquisaId;
+
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if (dados.next() == false) {
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa consulta");
+                    } else {
+                        movimentacaoReturn.setNumAge(dados.getInt(1));
+                        movimentacaoReturn.setNumCc(dados.getInt(2));
+                        movimentacaoReturn.setDataMov(dados.getString(3));
+                        movimentacaoReturn.setNumDocto(dados.getString(4));
+                        movimentacaoReturn.setDebitoCredito(dados.getString(5));
+                        movimentacaoReturn.setIdHis(dados.getInt(6));
+                        movimentacaoReturn.setComplHis(dados.getString(7));
+                        movimentacaoReturn.setValor(dados.getInt(8));
+                        movimentacaoReturn.setSaldo(dados.getInt(9));
+                    }
+                    con.close();
+
+                    return movimentacaoReturn;
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return movimentacaoReturn;
+
+    }
+
     public void alteraRegistroJFBD(String tabela, String strDados, String pesquisaId) {
         con = connectDB();
         {
