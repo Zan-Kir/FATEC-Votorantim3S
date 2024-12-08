@@ -63,11 +63,15 @@ public class usuarios {
     
     public String alteraDadosSQLValue(){
         String dadosClientes;
-        dadosClientes = "'ID_USUARIO="
+        dadosClientes = "'ID="
         + this.getId()+ "',SENHA='"
 	+ this.getSenha()+ "',NUM_AGE='"
 	+ this.getNumAge()+ "',NUM_CC'"
 	+ this.getNumCc()+ "'";
         return dadosClientes;
+    }
+    
+     public String excluiSQLValues() {
+        return "ID='" + this.getId()+ "'";
     }
 }

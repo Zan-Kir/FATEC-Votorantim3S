@@ -14,6 +14,7 @@ import DAO.usuarios;
 public class cadUsuario extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
+    usuarios usuario_tela = new usuarios();
 
     public cadUsuario() {
         initComponents();
@@ -180,6 +181,86 @@ public class cadUsuario extends javax.swing.JFrame {
             jTextField2.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
+        }
+
+        operacao = "Alteração";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            usuarios dados_usuario = new usuarios();
+            dados_usuario.setId(jTextField1.getText());
+            dados_usuario.setSenha(jTextField2.getText());
+            dados_usuario.setNumAge(Integer.parseInt((jTextField3.getText())));
+            dados_usuario.setNumCc(Integer.parseInt((jTextField4.getText())));
+            objcon.alteraRegistroJFBD("USUARIOS", dados_usuario.alteraDadosSQLValue(), "ID=" + jTextField1.getText());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        }
+
+        operacao = "Alterar";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            usuario_tela = objcon.pesquisaUsuarioJFBD("USUARIOS", "ID = '" + jTextField1.getText() + "'");
+            jTextField2.setText(usuario_tela.getSenha());
+            jTextField3.setText(String.valueOf(usuario_tela.getNumAge()));
+            jTextField4.setText(String.valueOf(usuario_tela.getNumCc()));
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField4.setVisible(true);
+            jButton1.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
+        }
+
+        operacao = "Exclusão";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+
+            usuarios dados_usuario = new usuarios();
+            dados_usuario.setId(jTextField1.getText());
+
+            objcon.excluiRegistroJFBD("USUARIOS", dados_usuario.excluiSQLValues(), "ID=" + dados_usuario.getId());
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+
+        }
+
+        operacao = "Excluir";
+
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            connectDAO objcon = new connectDAO();
+            usuario_tela = objcon.pesquisaUsuarioJFBD("USUARIOS", "ID = '" + jTextField1.getText() + "'");
+            jTextField2.setText(usuario_tela.getSenha());
+            jTextField3.setText(String.valueOf(usuario_tela.getNumAge()));
+            jTextField4.setText(String.valueOf(usuario_tela.getNumCc()));
+
+            jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField2.setEnabled(false);
+            jTextField3.setVisible(true);
+            jTextField3.setEnabled(false);
+            jTextField4.setVisible(true);
+            jTextField4.setEnabled(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

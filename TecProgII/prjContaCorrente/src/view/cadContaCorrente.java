@@ -232,7 +232,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
             contaCorrente dados_contaCorrente = new contaCorrente();
             dados_contaCorrente.setNumAge(Integer.parseInt(jTextField1.getText()));
 
-            objcon.excluiRegistroJFBD("AGENCIAS", dados_contaCorrente.excluiSQLValues(), "NUM_AGE=" + dados_contaCorrente.getNumAge());
+            objcon.excluiRegistroJFBD("CONTACORRENTE", dados_contaCorrente.excluiSQLValues(), "NUM_AGE=" + dados_contaCorrente.getNumAge());
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -245,7 +245,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
-            cc_tela = objcon.pesquisaContaCorrenteJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
+            cc_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE", "NUM_AGE = '" + jTextField1.getText() + "'");
             jTextField2.setText(String.valueOf(cc_tela.getNumCc()));
             jTextField3.setText(String.valueOf(cc_tela.getIdCli()));
             jTextField4.setText(String.valueOf(cc_tela.getSaldo()));

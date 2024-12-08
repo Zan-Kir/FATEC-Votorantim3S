@@ -232,7 +232,7 @@ public class connectDAO {
 
     public movimentacao pesquisaMovimentacaoJFBD(String tabela, String pesquisaId) {
         movimentacao movimentacaoReturn = new movimentacao();
-        String tabelaSGBD = "CLIENTES";
+        String tabelaSGBD = "MOVIMENTACAO";
         if (tabela.equals(tabelaSGBD)) {
 
             con = connectDB();
@@ -272,6 +272,46 @@ public class connectDAO {
             }
         }
         return movimentacaoReturn;
+
+    }
+    
+        public usuarios pesquisaUsuarioJFBD(String tabela, String pesquisaId) {
+        usuarios usuariosReturn = new usuarios();
+        String tabelaSGBD = "USUARIOS";
+        if (tabela.equals(tabelaSGBD)) {
+
+            con = connectDB();
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                String sql = "SELECT * FROM " + tabela
+                        + " Where " + pesquisaId;
+
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if (dados.next() == false) {
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa consulta");
+                    } else {
+                        usuariosReturn.setId(dados.getString(1));
+                        usuariosReturn.setSenha(dados.getString(2));
+                        usuariosReturn.setNumAge(dados.getInt(3));
+                        usuariosReturn.setNumCc(dados.getInt(4));
+                    }
+                    con.close();
+
+                    return usuariosReturn;
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => " + erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => " + erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => " + erro.getErrorCode());
+                }
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return usuariosReturn;
 
     }
 
