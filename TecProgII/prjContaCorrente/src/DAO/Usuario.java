@@ -1,7 +1,7 @@
-
 package DAO;
 
-public class usuarios {
+public class Usuario {
+
     String id;
     String senha;
     int numAge;
@@ -13,9 +13,8 @@ public class usuarios {
         this.numAge = numAge;
         this.numCc = numCc;
     }*/
-    
-    public usuarios(){
-        
+    public Usuario() {
+
     }
 
     public String getId() {
@@ -49,29 +48,29 @@ public class usuarios {
     public void setNumCc(int numCc) {
         this.numCc = numCc;
     }
-    
-    public String dadosSQLValues(){
+
+    public String dadosSQLValues() {
         String dadosClientes;
         dadosClientes = "'"
-        + this.getId()+ "','"
-	+ this.getSenha()+ "','"
-	+ this.getNumAge()+ "','"
-	+ this.getNumCc()+ "'";
-        
+                + this.getId() + "','"
+                + this.getSenha() + "','"
+                + this.getNumAge() + "','"
+                + this.getNumCc() + "'";
+
         return dadosClientes;
     }
-    
-    public String alteraDadosSQLValue(){
+
+    public String alteraDadosSQLValues() {
         String dadosClientes;
-        dadosClientes = "'ID="
-        + this.getId()+ "',SENHA='"
-	+ this.getSenha()+ "',NUM_AGE='"
-	+ this.getNumAge()+ "',NUM_CC'"
-	+ this.getNumCc()+ "'";
+        dadosClientes = "ID='"
+                + this.getId() + "',SENHA='"
+                + this.getSenha() + "',NUM_AGE='"
+                + this.getNumAge() + "',NUM_CC='"
+                + this.getNumCc() + "'";
         return dadosClientes;
     }
-    
-     public String excluiSQLValues() {
-        return "ID='" + this.getId()+ "'";
+
+    public String excluiSQLValues() {
+        return "ID='" + this.getId() + "'";
     }
 }

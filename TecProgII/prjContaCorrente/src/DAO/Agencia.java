@@ -1,13 +1,13 @@
 
 package DAO;
 
-public class agencias {
+public class Agencia {
     int numAge;
     String nomeAge;
     String endeAge;
     String numeAge;
     String complAge;
-    String BairAre;
+    String BairAge;
     String CidaAge;
     String ufAge;
     String cepAge;
@@ -22,7 +22,7 @@ public class agencias {
         this.cepAge = cepAge;
     }*/
     
-    public agencias(){
+    public Agencia(){
         
     }
     
@@ -47,8 +47,8 @@ public class agencias {
         this.complAge = complAge;
     }
 
-    public void setBairAre(String BairAre) {
-        this.BairAre = BairAre;
+    public void setBairAge(String BairAre) {
+        this.BairAge = BairAre;
     }
 
     public void setCidaAge(String CidaAge) {
@@ -87,8 +87,8 @@ public class agencias {
         return complAge;
     }
 
-    public String getBairAre() {
-        return BairAre;
+    public String getBairAge() {
+        return BairAge;
     }
 
     public String getCidaAge() {
@@ -115,7 +115,7 @@ public class agencias {
 	+ this.getEndeAge()+ "','"
 	+ this.getNumeAge()+ "','"
 	+ this.getComplAge()+ "','"
-	+ this.getBairAre()+ "','"
+	+ this.getBairAge()+ "','"
 	+ this.getCidaAge()+ "','"
 	+ this.getUfAge()+ "','"
 	+ this.getCepAge()+ "','"
@@ -124,15 +124,15 @@ public class agencias {
         return dadosAgencia;
     }
     
-        public String alteraDadosSQLValue(){
+        public String alteraDadosSQLValues(){
         String dadosAgencia;
-        dadosAgencia = "'NUM_AGE='"
+        dadosAgencia = "NUM_AGE='"
         + this.getNumAge()+ "',NOME_AGE='"
 	+ this.getNomeAge()+ "',ENDE_AGE='"
-	+ this.getEndeAge()+ "',NUM_AGE='"
+	+ this.getEndeAge()+ "',NUME_AGE='"
 	+ this.getNumeAge()+ "',COMPL_AGE='"
 	+ this.getComplAge()+ "',BAIR_AGE='"
-	+ this.getBairAre()+ "',CIDA_AGE='"
+	+ this.getBairAge()+ "',CIDA_AGE='"
 	+ this.getCidaAge()+ "',UF_AGE='"
 	+ this.getUfAge()+ "',CEP_AGE='"
 	+ this.getCepAge()+ "',FONE_AGE='"

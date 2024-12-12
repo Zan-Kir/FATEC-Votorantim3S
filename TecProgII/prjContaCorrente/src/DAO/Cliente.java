@@ -2,7 +2,7 @@ package DAO;
 
 import java.util.Date;
 
-public class clientes {
+public class Cliente {
 
     int idCli;
     String nomeCli;
@@ -26,7 +26,7 @@ public class clientes {
         this.ufCli = ufCli;
         this.cepCli = cepCli;
     }*/
-    public clientes() {
+    public Cliente() {
 
     }
 
@@ -154,7 +154,7 @@ public class clientes {
         return dadosClientes;
     }
 
-    public String alteraSQLValues() {
+    public String alteraDadosSQLValues() {
         String dadosClientes;
         dadosClientes = "ID_CLI='"
                 + this.getIdCli() + "',NOME_CLI='"

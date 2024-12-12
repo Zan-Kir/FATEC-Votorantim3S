@@ -5,22 +5,22 @@
 package view;
 
 import DAO.connectDAO;
-import DAO.historicos;
+import DAO.Historico;
 
 /**
  *
  * @author Alunos
  */
-public class cadHistorico extends javax.swing.JFrame {
+public class viewHistorico extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
-    historicos historico_tela = new historicos();
+    Historico historico_tela = new Historico();
 
-    public cadHistorico() {
+    public viewHistorico() {
         initComponents();
     }
 
-    public cadHistorico(String operacaoAtiva) {
+    public viewHistorico(String operacaoAtiva) {
         initComponents();
 
         operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
@@ -38,7 +38,7 @@ public class cadHistorico extends javax.swing.JFrame {
             jLabel2.setVisible(false);
             jTextField1.setVisible(true);
             jTextField2.setVisible(false);
-            jButton1.setText("Alterar");
+            jButton1.setText("Pesquisar");
         }
         operacao = "Excluir";                                // defini a operação como Excluir um registro
         if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
@@ -46,7 +46,7 @@ public class cadHistorico extends javax.swing.JFrame {
             jLabel2.setVisible(false);
             jTextField1.setVisible(true);
             jTextField2.setVisible(false);
-            jButton1.setText("Excluir");
+            jButton1.setText("Pesquisar");
         }
     }
 
@@ -68,6 +68,12 @@ public class cadHistorico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Id histórico");
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Descrição");
 
@@ -121,7 +127,7 @@ public class cadHistorico extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String operacao = "Incluir";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            historicos dados_Historico = new historicos();
+            Historico dados_Historico = new Historico();
             dados_Historico.setIdHis(Integer.parseInt((jTextField1.getText())));
             dados_Historico.setDesHis(jTextField2.getText());
 
@@ -133,13 +139,13 @@ public class cadHistorico extends javax.swing.JFrame {
             jTextField2.setText("");
 
         }
-        
+
         operacao = "Alteração";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            historicos dados_historico = new historicos();
+            Historico dados_historico = new Historico();
             dados_historico.setIdHis(Integer.parseInt((jTextField1.getText())));
             dados_historico.setDesHis(jTextField2.getText());
             objcon.alteraRegistroJFBD("HISTORICOS", dados_historico.alteraDadosSQLValues(), "ID_HIS=" + jTextField1.getText());
@@ -154,12 +160,11 @@ public class cadHistorico extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
             historico_tela = objcon.pesquisaHistoricoJFBD("HISTORICOS", "ID_HIS = '" + jTextField1.getText() + "'");
-            jTextField2.setText(String.valueOf(historico_tela.getIdHis()));
- 
-
+            jTextField2.setText(historico_tela.getDesHis());
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
@@ -170,7 +175,7 @@ public class cadHistorico extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            historicos dados_historico = new historicos();
+            Historico dados_historico = new Historico();
             dados_historico.setIdHis(Integer.parseInt(jTextField1.getText()));
 
             objcon.excluiRegistroJFBD("HISTORICOS", dados_historico.excluiSQLValues(), "ID_HIS=" + dados_historico.getIdHis());
@@ -186,16 +191,22 @@ public class cadHistorico extends javax.swing.JFrame {
             connectDAO objcon = new connectDAO();
             historico_tela = objcon.pesquisaHistoricoJFBD("HISTORICOS", "ID_HIS = '" + jTextField1.getText() + "'");
             jTextField2.setText(historico_tela.getDesHis());
-
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jTextField2.setEnabled(false);
             jButton1.setText("Excluir");
             operacaoAtivaGlobal = "Exclusão";
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (jTextField1.getText().length() >= 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments
@@ -214,14 +225,22 @@ public class cadHistorico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -234,7 +253,7 @@ public class cadHistorico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cadHistorico().setVisible(true);
+                new viewHistorico().setVisible(true);
             }
         });
     }

@@ -2,7 +2,7 @@ package DAO;
 
 import java.util.Date;
 
-public class movimentacao {
+public class Movimentacao {
 
     int numAge;
     int numCc;
@@ -11,8 +11,8 @@ public class movimentacao {
     String DebitoCredito;
     int idHis;
     String complHis;
-    int valor;
-    int saldo;
+    double valor;
+    double saldo;
 
     /*public movimentacao(int numAge, int numCc, Date dataMov, String numDocto, String DebitoCredito, int idHis, int valor) {
         this.numAge = numAge;
@@ -23,7 +23,7 @@ public class movimentacao {
         this.idHis = idHis;
         this.valor = valor;
     }*/
-    public movimentacao() {
+    public Movimentacao() {
 
     }
 
@@ -55,11 +55,11 @@ public class movimentacao {
         return complHis;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
@@ -91,11 +91,11 @@ public class movimentacao {
         this.complHis = complHis;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
@@ -115,15 +115,15 @@ public class movimentacao {
         return dadosMovimentacao;
     }
 
-    public String alteraDadosSQLValue() {
+    public String alteraDadosSQLValues() {
         String dadosMovimentacao;
-        dadosMovimentacao = "'NUM_AGE="
+        dadosMovimentacao = "NUM_AGE='"
                 + this.getNumAge() + "',NUM_CC='"
                 + this.getNumCc() + "',DATA_MOV='"
                 + this.getDataMov() + "',NUM_DOCTO='"
-                + this.getNumDocto() + "',DEB_CRED='"
+                + this.getNumDocto() + "',DEBITO_CREDITO='"
                 + this.getDebitoCredito() + "',ID_HIS='"
-                + this.getIdHis() + "',COMPL_HIS'"
+                + this.getIdHis() + "',COMPL_HIS='"
                 + this.getComplHis() + "',VALOR='"
                 + this.getValor() + "',SALDO='"
                 + this.getSaldo() + "'";

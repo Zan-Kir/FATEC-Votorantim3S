@@ -41,6 +41,7 @@ public class connectDAO {
         try {
             stmt = con.createStatement();
             String sql = "INSERT INTO dbo." + tabela + " " + " VALUES (" + strDados + ")";
+            System.out.println("SQL Gerado: " + sql);
             JOptionPane.showMessageDialog(null, "String de insert> " + sql);
 
             try {
@@ -57,8 +58,8 @@ public class connectDAO {
         }
     }
 
-    public clientes pesquisaClienteJFBD(String tabela, String pesquisaId) {
-        clientes clientesReturn = new clientes();
+    public Cliente pesquisaClienteJFBD(String tabela, String pesquisaId) {
+        Cliente clientesReturn = new Cliente();
         String tabelaSGBD = "CLIENTES";
         if (tabela.equals(tabelaSGBD)) {
 
@@ -106,8 +107,8 @@ public class connectDAO {
 
     }
 
-    public agencias pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
-        agencias agenciasReturn = new agencias();
+    public Agencia pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
+        Agencia agenciasReturn = new Agencia();
         String tabelaSGBD = "AGENCIAS";
         if (tabela.equals(tabelaSGBD)) {
 
@@ -129,7 +130,7 @@ public class connectDAO {
                         agenciasReturn.setEndeAge(dados.getString(3));
                         agenciasReturn.setNumeAge(dados.getString(4));
                         agenciasReturn.setComplAge(dados.getString(5));
-                        agenciasReturn.setBairAre(dados.getString(6));
+                        agenciasReturn.setBairAge(dados.getString(6));
                         agenciasReturn.setCidaAge(dados.getString(7));
                         agenciasReturn.setUfAge(dados.getString(8));
                         agenciasReturn.setCepAge(dados.getString(9));
@@ -152,8 +153,8 @@ public class connectDAO {
 
     }
 
-    public contaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId) {
-        contaCorrente ccReturn = new contaCorrente();
+    public ContaCorrente pesquisaContaCorrenteJFBD(String tabela, String pesquisaId) {
+        ContaCorrente ccReturn = new ContaCorrente();
         String tabelaSGBD = "CONTACORRENTE";
         if (tabela.equals(tabelaSGBD)) {
 
@@ -192,8 +193,8 @@ public class connectDAO {
 
     }
 
-    public historicos pesquisaHistoricoJFBD(String tabela, String pesquisaId) {
-        historicos historicoReturn = new historicos();
+    public Historico pesquisaHistoricoJFBD(String tabela, String pesquisaId) {
+        Historico historicoReturn = new Historico();
         String tabelaSGBD = "HISTORICOS";
         if (tabela.equals(tabelaSGBD)) {
 
@@ -230,8 +231,8 @@ public class connectDAO {
 
     }
 
-    public movimentacao pesquisaMovimentacaoJFBD(String tabela, String pesquisaId) {
-        movimentacao movimentacaoReturn = new movimentacao();
+    public Movimentacao pesquisaMovimentacaoJFBD(String tabela, String pesquisaId) {
+        Movimentacao movimentacaoReturn = new Movimentacao();
         String tabelaSGBD = "MOVIMENTACAO";
         if (tabela.equals(tabelaSGBD)) {
 
@@ -255,8 +256,8 @@ public class connectDAO {
                         movimentacaoReturn.setDebitoCredito(dados.getString(5));
                         movimentacaoReturn.setIdHis(dados.getInt(6));
                         movimentacaoReturn.setComplHis(dados.getString(7));
-                        movimentacaoReturn.setValor(dados.getInt(8));
-                        movimentacaoReturn.setSaldo(dados.getInt(9));
+                        movimentacaoReturn.setValor(dados.getDouble(8));
+                        movimentacaoReturn.setSaldo(dados.getDouble(9));
                     }
                     con.close();
 
@@ -274,9 +275,9 @@ public class connectDAO {
         return movimentacaoReturn;
 
     }
-    
-        public usuarios pesquisaUsuarioJFBD(String tabela, String pesquisaId) {
-        usuarios usuariosReturn = new usuarios();
+
+    public Usuario pesquisaUsuarioJFBD(String tabela, String pesquisaId) {
+        Usuario usuariosReturn = new Usuario();
         String tabelaSGBD = "USUARIOS";
         if (tabela.equals(tabelaSGBD)) {
 

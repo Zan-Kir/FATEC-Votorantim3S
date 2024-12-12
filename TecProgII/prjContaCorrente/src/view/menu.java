@@ -228,109 +228,109 @@ public class menu extends javax.swing.JFrame {
 
     private void jMenuICadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuICadCliActionPerformed
         String operacao = "Incluir";
-        cadCliente cad_cliente = new cadCliente(operacao);
+        viewCliente cad_cliente = new viewCliente(operacao);
         cad_cliente.setVisible(true);
     }//GEN-LAST:event_jMenuICadCliActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         String operacao = "Incluir";
-        cadContaCorrente cad_conta = new cadContaCorrente(operacao);
+        viewContaCorrente cad_conta = new viewContaCorrente(operacao);
         cad_conta.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         String operacao = "Incluir";
-        cadUsuario cad_usuario = new cadUsuario(operacao);
+        viewUsuario cad_usuario = new viewUsuario(operacao);
         cad_usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         String operacao = "Alterar";
-        cadUsuario alterar_usuario = new cadUsuario(operacao);
+        viewUsuario alterar_usuario = new viewUsuario(operacao);
         alterar_usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuAltCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAltCliActionPerformed
         String operacao = "Alterar";
-        cadCliente alterar_cliente = new cadCliente(operacao);
+        viewCliente alterar_cliente = new viewCliente(operacao);
         alterar_cliente.setVisible(true);
     }//GEN-LAST:event_jMenuAltCliActionPerformed
 
     private void jMenuExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExcluirCliActionPerformed
         String operacao = "Excluir";
-        cadCliente excluir_cliente = new cadCliente(operacao);
+        viewCliente excluir_cliente = new viewCliente(operacao);
         excluir_cliente.setVisible(true);
     }//GEN-LAST:event_jMenuExcluirCliActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         String operacao = "Incluir";
-        cadAgencia cad_agencia = new cadAgencia(operacao);
+        viewAgencia cad_agencia = new viewAgencia(operacao);
         cad_agencia.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         String operacao = "Alterar";
-        cadAgencia alterar_agencia = new cadAgencia(operacao);
+        viewAgencia alterar_agencia = new viewAgencia(operacao);
         alterar_agencia.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         String operacao = "Excluir";
-        cadAgencia excluir_agencia = new cadAgencia(operacao);
+        viewAgencia excluir_agencia = new viewAgencia(operacao);
         excluir_agencia.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String operacao = "Alterar";
-        cadContaCorrente alterar_conta = new cadContaCorrente(operacao);
+        viewContaCorrente alterar_conta = new viewContaCorrente(operacao);
         alterar_conta.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         String operacao = "Excluir";
-        cadContaCorrente excluir_conta = new cadContaCorrente(operacao);
+        viewContaCorrente excluir_conta = new viewContaCorrente(operacao);
         excluir_conta.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         String operacao = "Excluir";
-        cadUsuario excluir_usuario = new cadUsuario(operacao);
+        viewUsuario excluir_usuario = new viewUsuario(operacao);
         excluir_usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         String operacao = "Incluir";
-        cadMovimentacao cad_movimentacao = new cadMovimentacao(operacao);
+        viewMovimentacao cad_movimentacao = new viewMovimentacao(operacao);
         cad_movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         String operacao = "Alterar";
-        cadMovimentacao alterar_movimentacao = new cadMovimentacao(operacao);
+        viewMovimentacao alterar_movimentacao = new viewMovimentacao(operacao);
         alterar_movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         String operacao = "Excluir";
-        cadMovimentacao excluir_movimentacao = new cadMovimentacao(operacao);
+        viewMovimentacao excluir_movimentacao = new viewMovimentacao(operacao);
         excluir_movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         String operacao = "Incluir";
-        cadHistorico cad_historico = new cadHistorico(operacao);
+        viewHistorico cad_historico = new viewHistorico(operacao);
         cad_historico.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         String operacao = "Alterar";
-        cadHistorico alterar_historico = new cadHistorico(operacao);
+        viewHistorico alterar_historico = new viewHistorico(operacao);
         alterar_historico.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         String operacao = "Excluir";
-        cadHistorico excluir_historico = new cadHistorico(operacao);
+        viewHistorico excluir_historico = new viewHistorico(operacao);
         excluir_historico.setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 

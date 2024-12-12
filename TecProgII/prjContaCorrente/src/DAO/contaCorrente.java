@@ -1,6 +1,6 @@
 package DAO;
 
-public class contaCorrente {
+public class ContaCorrente {
 
     int numAge;
     int numCc;
@@ -12,7 +12,7 @@ public class contaCorrente {
         this.numCc = numCc;
         this.idCli = idCli;
     }*/
-    public contaCorrente() {
+    public ContaCorrente() {
 
     }
 
@@ -61,7 +61,7 @@ public class contaCorrente {
 
     public String alteraDadosSQLValues() {
         String dadosContaCorrente;
-        dadosContaCorrente = "'NUM_AGE='"
+        dadosContaCorrente = "NUM_AGE='"
                 + this.getNumAge() + "',NUM_CC='"
                 + this.getNumCc() + "',ID_CLI='"
                 + this.getIdCli() + "',SALDO='"

@@ -4,24 +4,25 @@
  */
 package view;
 
-import DAO.contaCorrente;
 import DAO.connectDAO;
+import DAO.Usuario;
 
 /**
  *
  * @author Alunos
  */
-public class cadContaCorrente extends javax.swing.JFrame {
+public class viewUsuario extends javax.swing.JFrame {
 
     String operacaoAtivaGlobal = "Nenhum";
-    contaCorrente cc_tela = new contaCorrente();
+    Usuario usuario_tela = new Usuario();
 
-    public cadContaCorrente() {
+    public viewUsuario() {
         initComponents();
     }
 
-    public cadContaCorrente(String operacaoAtiva) {
+    public viewUsuario(String operacaoAtiva) {
         initComponents();
+
         operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
         String operacao = "Incluir";                    // String para verificar qual é operação que será configurada
         if (operacaoAtiva.equals(operacao)) {
@@ -45,7 +46,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
             jTextField2.setVisible(false);
             jTextField3.setVisible(false);
             jTextField4.setVisible(false);
-            jButton1.setText("Alterar");
+            jButton1.setText("Pesquisar");
         }
         operacao = "Excluir";                                // defini a operação como Excluir um registro
         if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
@@ -57,7 +58,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
             jTextField2.setVisible(false);
             jTextField3.setVisible(false);
             jTextField4.setVisible(false);
-            jButton1.setText("Excluir");
+            jButton1.setText("Pesquisar");
         }
     }
 
@@ -82,17 +83,28 @@ public class cadContaCorrente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("N° Agencia");
+        jLabel1.setText("Id");
 
-        jLabel2.setText("N° Conta Corrente");
+        jLabel2.setText("Senha");
 
-        jLabel3.setText("Id cliente");
+        jLabel3.setText("N° agencia");
 
-        jLabel4.setText("Saldo");
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jLabel4.setText("N° conta corrente");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
             }
         });
 
@@ -122,13 +134,14 @@ public class cadContaCorrente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel1)))
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(jTextField3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 127, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -153,9 +166,9 @@ public class cadContaCorrente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -168,33 +181,33 @@ public class cadContaCorrente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String operacao = "Incluir";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            contaCorrente dados_Conta_Corrente = new contaCorrente();
-            dados_Conta_Corrente.setNumAge(Integer.parseInt((jTextField1.getText())));
-            dados_Conta_Corrente.setNumCc(Integer.parseInt((jTextField2.getText())));
-            dados_Conta_Corrente.setIdCli(Integer.parseInt((jTextField3.getText())));
-            dados_Conta_Corrente.setSaldo(Double.parseDouble((jTextField4.getText())));
+            Usuario dados_usuario = new Usuario();
+            dados_usuario.setId(jTextField1.getText());
+            dados_usuario.setSenha(jTextField2.getText());
+            dados_usuario.setNumAge(Integer.parseInt((jTextField3.getText())));
+            dados_usuario.setNumCc(Integer.parseInt((jTextField4.getText())));
 
             connectDAO objcon = new connectDAO();
 
-            objcon.insereRegistroJFBD("CONTACORRENTE", dados_Conta_Corrente.dadosSQLValues());
+            objcon.insereRegistroJFBD("USUARIOS", dados_usuario.dadosSQLValues());
 
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
         }
-        
+
         operacao = "Alteração";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            contaCorrente dados_contaCorrente = new contaCorrente();
-            dados_contaCorrente.setNumAge(Integer.parseInt((jTextField1.getText())));
-            dados_contaCorrente.setNumCc(Integer.parseInt((jTextField2.getText())));
-            dados_contaCorrente.setIdCli(Integer.parseInt((jTextField3.getText())));
-            dados_contaCorrente.setSaldo(Double.parseDouble((jTextField4.getText())));
-            objcon.alteraRegistroJFBD("CONTACORRENTE", dados_contaCorrente.alteraDadosSQLValues(), "NUM_AGE=" + jTextField1.getText());
+            Usuario dados_usuario = new Usuario();
+            dados_usuario.setId(jTextField1.getText());
+            dados_usuario.setSenha(jTextField2.getText());
+            dados_usuario.setNumAge(Integer.parseInt((jTextField3.getText())));
+            dados_usuario.setNumCc(Integer.parseInt((jTextField4.getText())));
+            objcon.alteraRegistroJFBD("USUARIOS", dados_usuario.alteraDadosSQLValues(), "ID='" + jTextField1.getText() + "'");
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -206,17 +219,17 @@ public class cadContaCorrente extends javax.swing.JFrame {
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
-            cc_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE", "NUM_AGE = '" + jTextField1.getText() + "'");
-            jTextField2.setText(String.valueOf(cc_tela.getNumCc()));
-            jTextField3.setText(String.valueOf(cc_tela.getIdCli()));
-            jTextField4.setText(String.valueOf(cc_tela.getSaldo()));
- 
+            usuario_tela = objcon.pesquisaUsuarioJFBD("USUARIOS", "ID = '" + jTextField1.getText() + "'");
+            jTextField2.setText(usuario_tela.getSenha());
+            jTextField3.setText(String.valueOf(usuario_tela.getNumAge()));
+            jTextField4.setText(String.valueOf(usuario_tela.getNumCc()));
 
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jTextField3.setVisible(true);
             jTextField4.setVisible(true);
@@ -229,10 +242,10 @@ public class cadContaCorrente extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            contaCorrente dados_contaCorrente = new contaCorrente();
-            dados_contaCorrente.setNumAge(Integer.parseInt(jTextField1.getText()));
+            Usuario dados_usuario = new Usuario();
+            dados_usuario.setId(jTextField1.getText());
 
-            objcon.excluiRegistroJFBD("CONTACORRENTE", dados_contaCorrente.excluiSQLValues(), "NUM_AGE=" + dados_contaCorrente.getNumAge());
+            objcon.excluiRegistroJFBD("USUARIOS", dados_usuario.excluiSQLValues(), "ID= '" + dados_usuario.getId() + "'");
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -245,16 +258,17 @@ public class cadContaCorrente extends javax.swing.JFrame {
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
-            cc_tela = objcon.pesquisaContaCorrenteJFBD("CONTACORRENTE", "NUM_AGE = '" + jTextField1.getText() + "'");
-            jTextField2.setText(String.valueOf(cc_tela.getNumCc()));
-            jTextField3.setText(String.valueOf(cc_tela.getIdCli()));
-            jTextField4.setText(String.valueOf(cc_tela.getSaldo()));
+            usuario_tela = objcon.pesquisaUsuarioJFBD("USUARIOS", "ID = '" + jTextField1.getText() + "'");
+            jTextField2.setText(usuario_tela.getSenha());
+            jTextField3.setText(String.valueOf(usuario_tela.getNumAge()));
+            jTextField4.setText(String.valueOf(usuario_tela.getNumCc()));
 
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jTextField2.setEnabled(false);
             jTextField3.setVisible(true);
@@ -264,7 +278,20 @@ public class cadContaCorrente extends javax.swing.JFrame {
             jButton1.setText("Excluir");
             operacaoAtivaGlobal = "Exclusão";
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        if (jTextField3.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        if (jTextField4.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments
@@ -283,14 +310,22 @@ public class cadContaCorrente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadContaCorrente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadContaCorrente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadContaCorrente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadContaCorrente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -303,7 +338,7 @@ public class cadContaCorrente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cadContaCorrente().setVisible(true);
+                new viewUsuario().setVisible(true);
             }
         });
     }

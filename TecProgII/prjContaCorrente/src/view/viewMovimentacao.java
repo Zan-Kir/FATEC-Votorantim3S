@@ -4,26 +4,24 @@
  */
 package view;
 
-import DAO.agencias;
+import DAO.Movimentacao;
 import DAO.connectDAO;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author Alunos
  */
-public class cadAgencia extends javax.swing.JFrame {
+public class viewMovimentacao extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cad_Cliente
-     */
     String operacaoAtivaGlobal = "Nenhum";
-    agencias agencia_tela = new agencias();
+    Movimentacao movimentacao_tela = new Movimentacao();
 
-    public cadAgencia() {
+    public viewMovimentacao() {
         initComponents();
     }
 
-    public cadAgencia(String operacaoAtiva) {
+    public viewMovimentacao(String operacaoAtiva) {
         initComponents();
 
         operacaoAtivaGlobal = operacaoAtiva;  // Setar a operacaoAtivaGlobal com o parâmetro recebido para utilização em toda a classe
@@ -38,7 +36,6 @@ public class cadAgencia extends javax.swing.JFrame {
             jLabel7.setVisible(true);
             jLabel8.setVisible(true);
             jLabel9.setVisible(true);
-            jLabel10.setVisible(true);
             jTextField1.setVisible(true);
             jTextField2.setVisible(true);
             jTextField3.setVisible(true);
@@ -48,7 +45,6 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setVisible(true);
             jTextField8.setVisible(true);
             jTextField9.setVisible(true);
-            jTextField10.setVisible(true);
             jButton1.setText("Incluir");
         }
         operacao = "Alterar";                               // defini a operação como Alterar os dados de um registro
@@ -62,7 +58,6 @@ public class cadAgencia extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jLabel8.setVisible(false);
             jLabel9.setVisible(false);
-            jLabel10.setVisible(false);
             jTextField1.setVisible(true);
             jTextField2.setVisible(false);
             jTextField3.setVisible(false);
@@ -72,8 +67,7 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setVisible(false);
             jTextField8.setVisible(false);
             jTextField9.setVisible(false);
-            jTextField10.setVisible(false);
-            jButton1.setText("Alterar");
+            jButton1.setText("Pesquisar");
         }
         operacao = "Excluir";                                // defini a operação como Excluir um registro
         if (operacaoAtiva.equals(operacao)) {       // para exclusão deverá ser setado todos os componentes como false para não visualizar
@@ -86,7 +80,6 @@ public class cadAgencia extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jLabel8.setVisible(false);
             jLabel9.setVisible(false);
-            jLabel10.setVisible(false);
             jTextField1.setVisible(true);
             jTextField2.setVisible(false);
             jTextField3.setVisible(false);
@@ -96,8 +89,7 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setVisible(false);
             jTextField8.setVisible(false);
             jTextField9.setVisible(false);
-            jTextField10.setVisible(false);
-            jButton1.setText("Excluir");
+            jButton1.setText("Pesquisar");
         }
     }
 
@@ -128,43 +120,85 @@ public class cadAgencia extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("N° Agencia");
 
-        jLabel2.setText("Nome");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
-        jLabel3.setText("Endereço");
+        jLabel2.setText("N° conta corrente");
 
-        jLabel4.setText("Número");
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jLabel3.setText("Data Movimentação");
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jLabel4.setText("N° docto");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
-        jLabel5.setText("Complemento");
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
-        jLabel6.setText("Bairro");
+        jLabel5.setText("Debito/credito");
 
-        jLabel7.setText("Cidade");
+        jLabel6.setText("Id histórico");
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
+
+        jLabel7.setText("Complemento");
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
             }
         });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
 
-        jLabel8.setText("Estado");
+        jLabel8.setText("Valor");
 
-        jLabel9.setText("Cep");
+        jLabel9.setText("Saldo");
 
-        jLabel10.setText("Fone");
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Confirma cadastro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -177,57 +211,47 @@ public class cadAgencia extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(201, 201, 201))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(244, 244, 244))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1)))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 21, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(117, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,13 +292,9 @@ public class cadAgencia extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -291,21 +311,20 @@ public class cadAgencia extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String operacao = "Incluir";
         if (operacaoAtivaGlobal.equals(operacao)) {
-            agencias dados_agencia = new agencias();
-            dados_agencia.setNumAge(Integer.parseInt((jTextField1.getText())));
-            dados_agencia.setNomeAge(jTextField2.getText());
-            dados_agencia.setEndeAge(jTextField3.getText());
-            dados_agencia.setNumeAge(jTextField4.getText());
-            dados_agencia.setComplAge(jTextField5.getText());
-            dados_agencia.setBairAre(jTextField6.getText());
-            dados_agencia.setCidaAge(jTextField7.getText());
-            dados_agencia.setUfAge(jTextField8.getText());
-            dados_agencia.setCepAge(jTextField9.getText());
-            dados_agencia.setFoneAge(jTextField10.getText());
+            Movimentacao dados_movimentacao = new Movimentacao();
+            dados_movimentacao.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_movimentacao.setDataMov(jTextField3.getText());
+            dados_movimentacao.setNumDocto(jTextField4.getText());
+            dados_movimentacao.setDebitoCredito(jTextField5.getText());
+            dados_movimentacao.setIdHis(Integer.parseInt((jTextField6.getText())));
+            dados_movimentacao.setComplHis(jTextField7.getText());
+            dados_movimentacao.setValor(Double.parseDouble((jTextField8.getText())));
+            dados_movimentacao.setSaldo(Double.parseDouble((jTextField9.getText())));
 
             connectDAO objcon = new connectDAO();
 
-            objcon.insereRegistroJFBD("AGENCIAS", dados_agencia.dadosSQLValues());
+            objcon.insereRegistroJFBD("MOVIMENTACAO", dados_movimentacao.dadosSQLValues());
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -316,28 +335,25 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setText("");
             jTextField8.setText("");
             jTextField9.setText("");
-            jTextField10.setText("");
-
         }
-        
+
         operacao = "Alteração";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            agencias dados_agencia = new agencias();
-            dados_agencia.setNumAge(Integer.parseInt((jTextField1.getText())));
-            dados_agencia.setNomeAge(jTextField2.getText());
-            dados_agencia.setEndeAge(jTextField3.getText());
-            dados_agencia.setNumeAge(jTextField4.getText());
-            dados_agencia.setComplAge(jTextField5.getText());
-            dados_agencia.setBairAre(jTextField6.getText());
-            dados_agencia.setCidaAge(jTextField7.getText());
-            dados_agencia.setUfAge(jTextField8.getText());
-            dados_agencia.setCepAge(jTextField9.getText());
-            dados_agencia.setFoneAge(jTextField10.getText());
+            Movimentacao dados_movimentacao = new Movimentacao();
+            dados_movimentacao.setNumAge(Integer.parseInt((jTextField1.getText())));
+            dados_movimentacao.setNumCc(Integer.parseInt((jTextField2.getText())));
+            dados_movimentacao.setDataMov(jTextField3.getText());
+            dados_movimentacao.setNumDocto(jTextField4.getText());
+            dados_movimentacao.setDebitoCredito(jTextField5.getText());
+            dados_movimentacao.setIdHis(Integer.parseInt(jTextField6.getText()));
+            dados_movimentacao.setComplHis(jTextField7.getText());
+            dados_movimentacao.setValor(Double.parseDouble((jTextField8.getText())));
+            dados_movimentacao.setSaldo(Double.parseDouble((jTextField9.getText())));
 
-            objcon.alteraRegistroJFBD("AGENCIAS", dados_agencia.alteraDadosSQLValue(), "NUM_AGE=" + jTextField1.getText());
+            objcon.alteraRegistroJFBD("MOVIMENTACAO", dados_movimentacao.alteraDadosSQLValues(), "NUM_AGE=" + jTextField1.getText());
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -348,23 +364,21 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setText("");
             jTextField8.setText("");
             jTextField9.setText("");
-            jTextField10.setText("");
         }
 
         operacao = "Alterar";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
-            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
-            jTextField2.setText(agencia_tela.getNomeAge());
-            jTextField3.setText(agencia_tela.getEndeAge());
-            jTextField4.setText(agencia_tela.getNumeAge());
-            jTextField5.setText(agencia_tela.getComplAge());
-            jTextField6.setText(agencia_tela.getBairAre());
-            jTextField7.setText(agencia_tela.getCidaAge());
-            jTextField8.setText(agencia_tela.getUfAge());
-            jTextField9.setText(agencia_tela.getCepAge());
-            jTextField10.setText(agencia_tela.getFoneAge());
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(movimentacao_tela.getNumCc()));
+            jTextField3.setText(movimentacao_tela.getDataMov());
+            jTextField4.setText(movimentacao_tela.getNumDocto());
+            jTextField5.setText(movimentacao_tela.getDebitoCredito());
+            jTextField6.setText(String.valueOf(movimentacao_tela.getIdHis()));
+            jTextField7.setText(movimentacao_tela.getComplHis());
+            jTextField8.setText(String.valueOf(movimentacao_tela.getValor()));
+            jTextField9.setText(String.valueOf(movimentacao_tela.getSaldo()));
 
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
@@ -375,8 +389,8 @@ public class cadAgencia extends javax.swing.JFrame {
             jLabel7.setVisible(true);
             jLabel8.setVisible(true);
             jLabel9.setVisible(true);
-            jLabel10.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jTextField3.setVisible(true);
             jTextField4.setVisible(true);
@@ -385,7 +399,6 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setVisible(true);
             jTextField8.setVisible(true);
             jTextField9.setVisible(true);
-            jTextField10.setVisible(true);
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
         }
@@ -395,10 +408,10 @@ public class cadAgencia extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
 
-            agencias dados_agencia = new agencias();
-            dados_agencia.setNumAge(Integer.parseInt(jTextField1.getText()));
+            Movimentacao dados_movimentacao = new Movimentacao();
+            movimentacao_tela.setNumAge(Integer.parseInt(jTextField1.getText()));
 
-            objcon.excluiRegistroJFBD("AGENCIAS", dados_agencia.excluiSQLValues(), "NUM_AGE=" + dados_agencia.getNumAge());
+            objcon.excluiRegistroJFBD("MOVIMENTACAO", dados_movimentacao.excluiSQLValues(), "NUM_AGE=" + movimentacao_tela.getNumAge());
 
             jTextField1.setText("");
             jTextField2.setText("");
@@ -409,25 +422,21 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField7.setText("");
             jTextField8.setText("");
             jTextField9.setText("");
-            jTextField10.setText("");
-
         }
 
         operacao = "Excluir";
 
         if (operacaoAtivaGlobal.equals(operacao)) {
             connectDAO objcon = new connectDAO();
-            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "NUM_AGE = '" + jTextField1.getText() + "'");
-            jTextField2.setText(agencia_tela.getNomeAge());
-            jTextField3.setText(agencia_tela.getEndeAge());
-            jTextField4.setText(agencia_tela.getNumeAge());
-            jTextField5.setText(agencia_tela.getComplAge());
-            jTextField6.setText(agencia_tela.getBairAre());
-            jTextField7.setText(agencia_tela.getCidaAge());
-            jTextField8.setText(agencia_tela.getUfAge());
-            jTextField9.setText(agencia_tela.getCepAge());
-            jTextField10.setText(agencia_tela.getFoneAge());
-
+            movimentacao_tela = objcon.pesquisaMovimentacaoJFBD("MOVIMENTACAO", "NUM_AGE = '" + jTextField1.getText() + "'");
+            jTextField2.setText(String.valueOf(movimentacao_tela.getNumCc()));
+            jTextField3.setText(movimentacao_tela.getDataMov());
+            jTextField4.setText(movimentacao_tela.getNumDocto());
+            jTextField5.setText(movimentacao_tela.getDebitoCredito());
+            jTextField6.setText(String.valueOf(movimentacao_tela.getIdHis()));
+            jTextField7.setText(movimentacao_tela.getComplHis());
+            jTextField8.setText(String.valueOf(movimentacao_tela.getValor()));
+            jTextField9.setText(String.valueOf(movimentacao_tela.getSaldo()));
 
             jLabel1.setVisible(true);                       // deixando somente o label e o TextField do Id para pesquisar como true (visível).
             jLabel2.setVisible(true);
@@ -438,8 +447,8 @@ public class cadAgencia extends javax.swing.JFrame {
             jLabel7.setVisible(true);
             jLabel8.setVisible(true);
             jLabel9.setVisible(true);
-            jLabel10.setVisible(true);
             jTextField1.setVisible(true);
+            jTextField1.setEnabled(false);
             jTextField2.setVisible(true);
             jTextField2.setEnabled(false);
             jTextField3.setVisible(true);
@@ -456,12 +465,91 @@ public class cadAgencia extends javax.swing.JFrame {
             jTextField8.setEnabled(false);
             jTextField9.setVisible(true);
             jTextField9.setEnabled(false);
-            jTextField10.setVisible(true);
-            jTextField10.setEnabled(false);
             jButton1.setText("Excluir");
             operacaoAtivaGlobal = "Exclusão";
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (jTextField1.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        if (jTextField2.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        if (jTextField4.getText().length() >= 6) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        if (jTextField5.getText().length() >= 1) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        if (jTextField6.getText().length() >= 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+
+        String text = jTextField8.getText();
+        char inputChar = evt.getKeyChar();
+
+        if (!Character.isDigit(inputChar) && inputChar != '.' && inputChar != KeyEvent.VK_BACK_SPACE && inputChar != KeyEvent.VK_DELETE) {
+            evt.consume();
+            return;
+        }
+
+        int dotIndex = text.indexOf('.');
+
+        if (dotIndex == -1) {
+            if (text.length() >= 9 && inputChar != '.') {
+                evt.consume();
+            }
+        } else {
+            if (jTextField8.getCaretPosition() > dotIndex && text.substring(dotIndex + 1).length() >= 2) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+
+        String text = jTextField9.getText();
+        char inputChar = evt.getKeyChar();
+
+        if (!Character.isDigit(inputChar) && inputChar != '.' && inputChar != KeyEvent.VK_BACK_SPACE && inputChar != KeyEvent.VK_DELETE) {
+            evt.consume();
+            return;
+        }
+
+        int dotIndex = text.indexOf('.');
+
+        if (dotIndex == -1) {
+            if (text.length() >= 15 && inputChar != '.') {
+                evt.consume();
+            }
+        } else {
+            if (jTextField9.getCaretPosition() > dotIndex && text.substring(dotIndex + 1).length() >= 2) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jTextField9KeyTyped
 
     /**
      * @param args the command line arguments
@@ -480,14 +568,26 @@ public class cadAgencia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewMovimentacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewMovimentacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewMovimentacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewMovimentacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -496,7 +596,7 @@ public class cadAgencia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cadAgencia().setVisible(true);
+                new viewMovimentacao().setVisible(true);
             }
         });
     }
@@ -504,7 +604,6 @@ public class cadAgencia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,7 +613,6 @@ public class cadAgencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
